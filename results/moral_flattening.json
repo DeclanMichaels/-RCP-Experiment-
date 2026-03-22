@@ -1,0 +1,44 @@
+{
+  "claude-sonnet/individualist": {
+    "neutral_variance": 1.4400000000000002,
+    "framed_variance": 0.46222222222222226,
+    "variance_ratio": 0.32098765432098764,
+    "framed_mean": 2.7333333333333334,
+    "is_flattened": true
+  },
+  "claude-sonnet/collectivist": {
+    "neutral_variance": 1.4400000000000002,
+    "framed_variance": 1.04,
+    "variance_ratio": 0.7222222222222222,
+    "framed_mean": 5.4,
+    "is_flattened": false
+  },
+  "claude-sonnet/hierarchical": {
+    "neutral_variance": 1.4400000000000002,
+    "framed_variance": 2.2933333333333334,
+    "variance_ratio": 1.5925925925925926,
+    "framed_mean": 4.8,
+    "is_flattened": false
+  },
+  "claude-sonnet/egalitarian": {
+    "neutral_variance": 1.4400000000000002,
+    "framed_variance": 2.088888888888889,
+    "variance_ratio": 1.4506172839506173,
+    "framed_mean": 3.3333333333333335,
+    "is_flattened": false
+  },
+  "claude-sonnet/irrelevant": {
+    "neutral_variance": 1.4400000000000002,
+    "framed_variance": 1.5822222222222222,
+    "variance_ratio": 1.0987654320987652,
+    "framed_mean": 3.466666666666667,
+    "is_flattened": false
+  },
+  "claude-sonnet/nonsense": {
+    "neutral_variance": 1.4400000000000002,
+    "framed_variance": NaN,
+    "variance_ratio": NaN,
+    "framed_mean": NaN,
+    "is_flattened": false
+  }
+}

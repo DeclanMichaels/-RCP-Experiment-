@@ -1,0 +1,24 @@
+{
+  "gemini-flash": {
+    "individualist": {
+      "spearman_rho": 0.635835087924407,
+      "mean_abs_distance": 1.0784313725490196
+    },
+    "collectivist": {
+      "spearman_rho": 0.6972747609573782,
+      "mean_abs_distance": 1.144736842105263
+    },
+    "hierarchical": {
+      "spearman_rho": 0.4553101388234838,
+      "mean_abs_distance": 1.673202614379085
+    },
+    "egalitarian": {
+      "spearman_rho": 0.5051501139833919,
+      "mean_abs_distance": 1.2960526315789473
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.6969922026763993,
+      "mean_abs_distance": 0.886710239651416
+    }
+  }
+}

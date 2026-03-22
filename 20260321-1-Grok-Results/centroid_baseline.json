@@ -1,0 +1,24 @@
+{
+  "grok": {
+    "individualist": {
+      "spearman_rho": 0.6537252371361176,
+      "mean_abs_distance": 0.5751633986928104
+    },
+    "collectivist": {
+      "spearman_rho": 0.6567721315637252,
+      "mean_abs_distance": 1.3202614379084967
+    },
+    "hierarchical": {
+      "spearman_rho": 0.566123774335741,
+      "mean_abs_distance": 1.1895424836601307
+    },
+    "egalitarian": {
+      "spearman_rho": 0.5465601768521798,
+      "mean_abs_distance": 1.1568627450980393
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.7085750994355372,
+      "mean_abs_distance": 0.7369281045751634
+    }
+  }
+}

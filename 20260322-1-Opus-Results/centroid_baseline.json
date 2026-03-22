@@ -1,0 +1,24 @@
+{
+  "claude-opus": {
+    "individualist": {
+      "spearman_rho": 0.7915487623066242,
+      "mean_abs_distance": 0.6470588235294118
+    },
+    "collectivist": {
+      "spearman_rho": 0.7276776154834238,
+      "mean_abs_distance": 1.5620915032679739
+    },
+    "hierarchical": {
+      "spearman_rho": 0.5768002222441976,
+      "mean_abs_distance": 1.522875816993464
+    },
+    "egalitarian": {
+      "spearman_rho": 0.6603994242382616,
+      "mean_abs_distance": 0.9869281045751634
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.8068127051346354,
+      "mean_abs_distance": 1.088235294117647
+    }
+  }
+}

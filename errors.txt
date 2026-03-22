@@ -1,0 +1,24 @@
+============================================================
+RCP EXPERIMENT -- UNIT TEST RUNNER
+============================================================
+
+--- collect.py functions (test_collect.py) ---
+============================================================
+  RCP EXPERIMENT RUNNER
+  2026-03-21 14:52:44 UTC
+============================================================
+
+  Models available: claude-sonnet
+  Models skipped (no API key):
+    gpt-4o: set OPENAI_API_KEY
+    gemini-pro: set GOOGLE_API_KEY
+    llama-70b: set TOGETHER_API_KEY
+  Mode: PILOT (deterministic only)
+
+============================================================
+  STEP 1: Unit Tests
+============================================================
+
+
+  *** FAILED: STEP 1: Unit Tests ***
+  Stopping. Fix the issue and re-run.

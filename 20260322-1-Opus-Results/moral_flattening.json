@@ -1,0 +1,44 @@
+{
+  "claude-opus/individualist": {
+    "neutral_variance": 1.04,
+    "framed_variance": 1.573333333333334,
+    "variance_ratio": 1.5128205128205132,
+    "framed_mean": 3.6,
+    "is_flattened": false
+  },
+  "claude-opus/collectivist": {
+    "neutral_variance": 1.04,
+    "framed_variance": 0.32888888888888884,
+    "variance_ratio": 0.31623931623931617,
+    "framed_mean": 5.266666666666667,
+    "is_flattened": true
+  },
+  "claude-opus/hierarchical": {
+    "neutral_variance": 1.04,
+    "framed_variance": 1.048888888888889,
+    "variance_ratio": 1.0085470085470085,
+    "framed_mean": 4.466666666666667,
+    "is_flattened": false
+  },
+  "claude-opus/egalitarian": {
+    "neutral_variance": 1.04,
+    "framed_variance": 1.6622222222222223,
+    "variance_ratio": 1.5982905982905984,
+    "framed_mean": 3.933333333333333,
+    "is_flattened": false
+  },
+  "claude-opus/irrelevant": {
+    "neutral_variance": 1.04,
+    "framed_variance": 1.84,
+    "variance_ratio": 1.7692307692307692,
+    "framed_mean": 3.6,
+    "is_flattened": false
+  },
+  "claude-opus/nonsense": {
+    "neutral_variance": 1.04,
+    "framed_variance": 2.1599999999999997,
+    "variance_ratio": 2.0769230769230766,
+    "framed_mean": 4.2,
+    "is_flattened": false
+  }
+}

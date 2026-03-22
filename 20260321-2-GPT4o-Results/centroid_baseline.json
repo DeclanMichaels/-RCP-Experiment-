@@ -1,0 +1,24 @@
+{
+  "gpt-4o": {
+    "individualist": {
+      "spearman_rho": 0.739321911020595,
+      "mean_abs_distance": 0.35947712418300654
+    },
+    "collectivist": {
+      "spearman_rho": 0.6439922146062274,
+      "mean_abs_distance": 1.5490196078431373
+    },
+    "hierarchical": {
+      "spearman_rho": 0.5610114326076333,
+      "mean_abs_distance": 1.4052287581699345
+    },
+    "egalitarian": {
+      "spearman_rho": 0.5971433167890745,
+      "mean_abs_distance": 0.6274509803921569
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.7529785797087242,
+      "mean_abs_distance": 0.8872549019607843
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "claude-opus/neutral/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-opus/individualist/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-opus/collectivist/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.8,
+    "full_unique_values": 6,
+    "moral_unique_values": 3,
+    "moral_pair_count": 15
+  },
+  "claude-opus/hierarchical/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 7,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-opus/egalitarian/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 7,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-opus/irrelevant/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-opus/nonsense/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  }
+}

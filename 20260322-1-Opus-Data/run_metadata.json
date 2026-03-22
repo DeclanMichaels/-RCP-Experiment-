@@ -1,0 +1,19 @@
+{
+  "pair_direction_seed": 887545375,
+  "models": [
+    "claude-opus"
+  ],
+  "framings": [
+    "neutral",
+    "individualist",
+    "collectivist",
+    "hierarchical",
+    "egalitarian",
+    "irrelevant",
+    "nonsense"
+  ],
+  "temperatures": [
+    0.0
+  ],
+  "timestamp": "2026-03-22T11:39:12.929992+00:00"
+}

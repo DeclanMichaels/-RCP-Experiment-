@@ -1,0 +1,19 @@
+{
+  "pair_direction_seed": 665749673,
+  "models": [
+    "gpt-4o"
+  ],
+  "framings": [
+    "neutral",
+    "individualist",
+    "collectivist",
+    "hierarchical",
+    "egalitarian",
+    "irrelevant",
+    "nonsense"
+  ],
+  "temperatures": [
+    0.0
+  ],
+  "timestamp": "2026-03-21T22:34:24.440407+00:00"
+}

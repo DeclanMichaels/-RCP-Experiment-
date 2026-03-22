@@ -1,0 +1,13 @@
+{
+  "pair_direction_seed": 1994260865,
+  "models": [
+    "claude-sonnet"
+  ],
+  "framings": [
+    "nonsense"
+  ],
+  "temperatures": [
+    0.0
+  ],
+  "timestamp": "2026-03-21T23:02:24.624020+00:00"
+}

@@ -1,0 +1,51 @@
+{
+  "grok/neutral/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6,
+    "full_unique_values": 6,
+    "moral_unique_values": 6,
+    "moral_pair_count": 15
+  },
+  "grok/individualist/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 5,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "grok/collectivist/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.6,
+    "full_unique_values": 7,
+    "moral_unique_values": 6,
+    "moral_pair_count": 15
+  },
+  "grok/hierarchical/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 7,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "grok/egalitarian/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 7,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "grok/irrelevant/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "grok/nonsense/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  }
+}

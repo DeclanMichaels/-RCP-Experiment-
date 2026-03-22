@@ -1,0 +1,44 @@
+{
+  "gemini-flash/individualist": {
+    "neutral_variance": 3.555555555555556,
+    "framed_variance": 0.9155555555555553,
+    "variance_ratio": 0.2574999999999999,
+    "framed_mean": 2.1333333333333333,
+    "is_flattened": false
+  },
+  "gemini-flash/collectivist": {
+    "neutral_variance": 3.555555555555556,
+    "framed_variance": 3.1288888888888886,
+    "variance_ratio": 0.8799999999999999,
+    "framed_mean": 5.266666666666667,
+    "is_flattened": false
+  },
+  "gemini-flash/hierarchical": {
+    "neutral_variance": 3.555555555555556,
+    "framed_variance": 4.248888888888889,
+    "variance_ratio": 1.1949999999999998,
+    "framed_mean": 4.133333333333334,
+    "is_flattened": false
+  },
+  "gemini-flash/egalitarian": {
+    "neutral_variance": 3.555555555555556,
+    "framed_variance": 2.9955555555555557,
+    "variance_ratio": 0.8425,
+    "framed_mean": 2.066666666666667,
+    "is_flattened": false
+  },
+  "gemini-flash/irrelevant": {
+    "neutral_variance": 3.555555555555556,
+    "framed_variance": 3.0222222222222226,
+    "variance_ratio": 0.8500000000000001,
+    "framed_mean": 2.6666666666666665,
+    "is_flattened": false
+  },
+  "gemini-flash/nonsense": {
+    "neutral_variance": 3.555555555555556,
+    "framed_variance": 6.222222222222223,
+    "variance_ratio": 1.7500000000000002,
+    "framed_mean": 3.3333333333333335,
+    "is_flattened": false
+  }
+}
