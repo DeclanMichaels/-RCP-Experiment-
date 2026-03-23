@@ -390,6 +390,7 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <div id="sec-overview" class="section active">
 <h2>Experiment Overview</h2>
 <p class="lead">Five language models probed for cultural value geometry using pairwise similarity judgments across seven cultural framings and three conceptual domains.</p>
+<p style="font-size:13px"><strong>Pre-registered:</strong> <a href="https://osf.io/cp4d3/overview" style="color:var(--accent)" target="_blank">osf.io/cp4d3</a> — Protocol, hypotheses, analysis plan, and code locked before confirmatory stochastic runs.</p>
 
 <h3>Protocol</h3>
 <p>RCP v3.0 presents each model with 153 concept pairs (from 18 concepts across physical, institutional, and moral domains) and asks for 1–7 similarity ratings. Each pair is rated under seven framings: neutral, individualist, collectivist, hierarchical, egalitarian, irrelevant (weather), and nonsense (geometric morality). If the model has stable conceptual geometry, physical-domain ratings should remain constant across framings. Moral and institutional drift reveals how cultural framing reshapes judgment.</p>
@@ -420,10 +421,19 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 </table>
 <p style="font-size:12px;color:var(--text-dim)">Physical concepts should be culturally invariant (the control). If cultural framing moves these, the method is broken. Institutional concepts are partially culturally loaded — they exist in all societies but their relationships shift by governance model. Moral concepts are maximally culturally loaded and should show the most drift. The predicted ordering is Physical &lt; Institutional &lt; Moral.</p>
 
+<h3>Methods Detail</h3>
+<div class="card">
+<p><strong>Temperature and repetitions.</strong> All results shown are from deterministic runs at temperature 0.0, one repetition per pair per framing. This is a pilot configuration. The protocol specifies 5 additional repetitions at temperature 0.7 (stochastic) to estimate within-condition variance, compute confidence intervals, and run the permutation tests defined in Section 8b of the protocol. These stochastic runs have not yet been collected. Until they are, all quantitative values (drift magnitudes, Spearman ρ, variance ratios) should be treated as point estimates without confidence intervals.</p>
+<p><strong>Response parameters.</strong> Rating probes: max_tokens=100, response format “Respond with only the number.” Explanation probes: max_tokens=200. Manipulation check: max_tokens=300. All responses parsed for integers 1–7; responses containing refusal language are flagged separately from parse failures.</p>
+<p><strong>Ordinal data handling.</strong> The 1–7 similarity scale is ordinal, not interval. Primary metrics (Spearman ρ, non-metric MDS) respect rank ordering only. The distance transformation d = 8 − sim and variance ratios in the flattening analysis assume equal intervals — a known limitation acknowledged in protocol Section 13.6. Tie density is reported per condition.</p>
+<p><strong>Statistical testing (pending).</strong> The protocol pre-specifies permutation tests for domain ordering (V6) and framing sensitivity (V5), with 10,000 and 5,000 permutations respectively. These require stochastic replication data and have not yet been run. The drift values shown are descriptive, not inferentially tested.</p>
+<p><strong>Known data gaps.</strong> Claude Sonnet nonsense framing: 2.6% parse rate due to max_tokens truncation (since fixed, awaiting re-run). Gemini Pro: entire dataset lost to parser bug with thinking-model response format (parser fixed, awaiting quota reset). Gemini Flash manipulation checks: truncated by insufficient max_tokens for that probe type.</p>
+</div>
+
 <h3>Models Tested</h3>
 <div class="metric-row">
   <div class="metric"><div class="label">Claude Sonnet</div><div class="value" style="font-size:14px">claude-sonnet-4</div><div class="sub"><span class="badge badge-complete">Complete</span></div></div>
-  <div class="metric"><div class="label">Claude Opus</div><div class="value" style="font-size:14px">claude-opus-4-6</div><div class="sub"><span class="badge badge-partial">Collecting</span></div></div>
+  <div class="metric"><div class="label">Claude Opus</div><div class="value" style="font-size:14px">claude-opus-4-6</div><div class="sub"><span class="badge badge-complete">Complete</span></div></div>
   <div class="metric"><div class="label">GPT-4o</div><div class="value" style="font-size:14px">gpt-4o</div><div class="sub"><span class="badge badge-complete">Complete</span></div></div>
   <div class="metric"><div class="label">Gemini Flash</div><div class="value" style="font-size:14px">gemini-2.5-flash</div><div class="sub"><span class="badge badge-complete">Complete</span></div></div>
   <div class="metric"><div class="label">Grok</div><div class="value" style="font-size:14px">grok-4.1-fast</div><div class="sub"><span class="badge badge-complete">Complete</span></div></div>
@@ -433,10 +443,11 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <h3>Key Findings</h3>
 <div class="card">
 <p><strong>1. Scalar where you need a manifold.</strong> All models show moral domain compression under cultural framing — one dial (overall similarity level) shifts, rather than concepts reorganizing into a structured alternative geometry. The framing acts like a volume knob, not a remix.</p>
-<p><strong>2. WEIRD-individualist default (with one exception).</strong> Claude Sonnet and GPT-4o default to individualist positions. Gemini Flash defaults collectivist. Grok is the outlier: perfectly balanced between individualist (ρ=0.654) and collectivist (ρ=0.657), likely reflecting equal-volume political discourse in X/Twitter training data and xAI's explicit non-partisan design goal. But balanced centroid comes at a cost — see finding 5.</p>
-<p><strong>3. Physical domain as control.</strong> Claude, GPT-4o, and Grok maintain stable physics across cultural framings (mean drift &lt; 0.8). Gemini Flash shows unstable physics (drift up to 1.78), indicating uniform geometry instability rather than domain-specific cultural sensitivity.</p>
-<p><strong>4. Nonsense as diagnostic.</strong> Claude Sonnet refused to produce ratings. GPT-4o and Gemini Flash complied blindly. Grok partially distinguished nonsense from real framings. Three compliance profiles from one control.</p>
-<p><strong>5. Grok's institutional sensitivity.</strong> Grok shows institutional drift exceeding moral drift across all framings — likely from X/Twitter training data where institutional concepts appear from every political angle but moral language is used rhetorically.</p>
+<p><strong>2. WEIRD-individualist default (with one exception).</strong> Claude Sonnet, Claude Opus, and GPT-4o default to individualist positions (Opus most strongly at ρ=0.792). Gemini Flash defaults collectivist. Grok is the outlier: perfectly balanced between individualist (ρ=0.654) and collectivist (ρ=0.657), <em>Hypothesis:</em> this may reflect equal-volume political discourse in X/Twitter training data and xAI's explicit non-partisan design goal. But balanced centroid comes at a cost — see finding 5.</p>
+<p><strong>3. Physical domain as control.</strong> Sonnet, GPT-4o, and Grok maintain stable physics across cultural framings (mean drift &lt; 0.8). Opus is intermediate (avg 0.91 — noisier than Sonnet despite sharing a training pipeline). Gemini Flash shows unstable physics (drift up to 1.78), suggesting uniform geometry instability rather than domain-specific cultural sensitivity. <em>Hypothesis:</em> Flash's instability may result from aggressive distillation from Gemini Pro (pending Pro data to test).</p>
+<p><strong>4. Nonsense as diagnostic.</strong> Claude Sonnet refused to produce ratings. Opus hedged then complied (74% of cultural mean). GPT-4o and Gemini Flash complied blindly (80–95%). Grok partially distinguished nonsense from real framings (63%). Four compliance profiles from one control.</p>
+<p><strong>5. Grok's institutional sensitivity.</strong> Grok shows institutional drift exceeding moral drift across all framings. <em>Hypothesis:</em> X/Twitter training data may expose institutional concepts from every political angle (creating many conflicting association paths) while moral language appears primarily as rhetoric rather than structured reasoning.</p>
+<p><strong>6. Mirror flattening within Anthropic.</strong> Sonnet and Opus both compress moral variance to ~32% of neutral — but under opposite framings. Sonnet flattens under individualism (its default), collapsing moral concepts toward low similarity. Opus flattens under collectivism (its furthest-from-default), collapsing toward high similarity. Same training pipeline, same compression magnitude, opposite triggers. <em>Caveat:</em> these are single-run variance estimates from 15 moral pairs each. The sampling distribution of variance at N=15 is wide; stochastic replication is needed to confirm this is robust rather than coincidence.</p>
 </div>
 </div>
 
@@ -495,6 +506,7 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <tbody>
 <tr><td>Claude Sonnet</td><td class="num">0.753</td><td class="num">0.587</td><td class="num">0.588</td><td class="num">0.513</td><td><span class="tag tag-indiv">Individualist</span></td></tr>
 <tr><td>GPT-4o</td><td class="num">0.739</td><td class="num">0.644</td><td class="num">0.561</td><td class="num">0.597</td><td><span class="tag tag-indiv">Individualist</span></td></tr>
+<tr><td>Claude Opus</td><td class="num">0.792</td><td class="num">0.728</td><td class="num">0.577</td><td class="num">0.660</td><td><span class="tag tag-indiv">Individualist</span></td></tr>
 <tr><td>Gemini Flash</td><td class="num">0.636</td><td class="num">0.697</td><td class="num">0.455</td><td class="num">0.505</td><td><span class="tag tag-collect">Collectivist</span></td></tr>
 <tr><td>Grok</td><td class="num">0.654</td><td class="num">0.657</td><td class="num">0.566</td><td class="num">0.547</td><td><span class="tag" style="background:#2a2a2a;color:#e5e7eb">Balanced (Δ 0.003)</span></td></tr>
 </tbody>
@@ -505,7 +517,7 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <thead><tr><th>Model</th><th>Behavior</th><th>Profile</th></tr></thead>
 <tbody>
 <tr><td>Claude Sonnet</td><td>Refused to produce ratings from nonsense framing. Parse rate: 2.6%</td><td><strong style="color:var(--green)">Hard refusal</strong></td></tr>
-<tr><td>Claude Opus</td><td>Flagged nonsense at manipulation check stage with caveats. Ratings: collecting...</td><td><strong style="color:var(--accent)">Hedged compliance (TBD)</strong></td></tr>
+<tr><td>Claude Opus</td><td>Flagged nonsense at manipulation check, then complied fully. Moral drift = 1.00 (74% of cultural mean).</td><td><strong style="color:var(--accent)">Hedged compliance</strong></td></tr>
 <tr><td>GPT-4o</td><td>Complied fully. Nonsense drift at 80% of cultural mean.</td><td><strong style="color:var(--red)">Blind compliance</strong></td></tr>
 <tr><td>Gemini Flash</td><td>Complied fully. Nonsense drift at 95% of cultural mean.</td><td><strong style="color:var(--red)">Blind compliance</strong></td></tr>
 <tr><td>Grok</td><td>Complied but drift at 63% of cultural mean. Partial distinction.</td><td><strong style="color:var(--amber)">Partial distinction</strong></td></tr>
@@ -587,15 +599,55 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <!-- ============================================================ -->
 <div id="sec-claude-opus" class="section">
 <h2><span class="model-dot" style="background:#818cf8"></span> Claude Opus 4.6</h2>
-<p class="lead">Currently collecting. Same Anthropic training pipeline as Sonnet — will test whether model scale changes the cultural geometry.</p>
+<p class="lead">Same Anthropic training pipeline as Sonnet, dramatically different geometry. Stronger WEIRD-individualist default, noisier physics, mirror-image moral flattening, and full nonsense compliance where Sonnet refused.</p>
 
 <div class="metric-row">
-  <div class="metric"><div class="label">Status</div><div class="value" style="font-size:14px;color:var(--amber)">Collecting...</div><div class="sub">Deterministic run in progress</div></div>
-  <div class="metric"><div class="label">Key Question</div><div class="value" style="font-size:13px;color:var(--text)">Scale → geometry?</div><div class="sub">Same company, different model size</div></div>
+  <div class="metric"><div class="label">Default Position</div><div class="value" style="color:#c4b5fd">Individualist</div><div class="sub">ρ = 0.792 (stronger than Sonnet)</div></div>
+  <div class="metric"><div class="label">Avg Physical Drift</div><div class="value" style="color:var(--amber)">0.91</div><div class="sub">Noisier than Sonnet (0.49)</div></div>
+  <div class="metric"><div class="label">Max Inst. Drift</div><div class="value" style="color:var(--red)">1.89</div><div class="sub">Nonsense framing</div></div>
+  <div class="metric"><div class="label">Nonsense Parse Rate</div><div class="value" style="color:var(--green)">100%</div><div class="sub">Hedged then complied</div></div>
 </div>
 
-<h3>Preliminary: Nonsense Response</h3>
-<div class="callout"><strong>Hedged compliance.</strong> Opus flagged the nonsense framing at the manipulation check stage: "I want to be straightforward: I'll describe this fictional society, but I should note I'm treating this as a thought experiment, not adopting its values as my own." It then built the framework anyway. This is a third compliance profile — neither Sonnet's hard refusal nor GPT-4o's blind compliance.</div>
+<h3>Domain Drift</h3>
+<table>
+<thead><tr><th>Framing</th><th class="num">Physical</th><th class="num">Institutional</th><th class="num">Moral</th><th class="num">Procrustes 2D</th><th class="num">Spearman ρ</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-indiv">Individualist</span></td><td class="num num-warn">0.61</td><td class="num num-warn">1.00</td><td class="num num-good">0.50</td><td class="num">0.575</td><td class="num">0.792</td></tr>
+<tr><td><span class="tag tag-collect">Collectivist</span></td><td class="num num-warn">1.11</td><td class="num num-bad">1.72</td><td class="num num-bad">1.56</td><td class="num">0.446</td><td class="num">0.728</td></tr>
+<tr><td><span class="tag tag-hier">Hierarchical</span></td><td class="num num-warn">1.06</td><td class="num num-bad">1.83</td><td class="num num-warn">0.89</td><td class="num">0.375</td><td class="num">0.577</td></tr>
+<tr><td><span class="tag tag-egal">Egalitarian</span></td><td class="num num-warn">1.00</td><td class="num num-warn">1.17</td><td class="num num-good">0.56</td><td class="num">0.647</td><td class="num">0.660</td></tr>
+<tr><td><span class="tag tag-irrel">Irrelevant</span></td><td class="num num-good">0.50</td><td class="num num-good">0.33</td><td class="num num-good">0.28</td><td class="num">0.585</td><td class="num">0.823</td></tr>
+<tr><td><span class="tag tag-nons">Nonsense</span></td><td class="num num-warn">1.17</td><td class="num num-bad">1.89</td><td class="num num-warn">1.00</td><td class="num">0.689</td><td class="num">0.523</td></tr>
+</tbody>
+</table>
+
+<h3>The Mirror Flattening</h3>
+<div class="callout"><strong>Opus and Sonnet flatten under opposite framings.</strong> Sonnet compressed moral variance to 32% of neutral under individualism (its default frame), collapsing all moral concepts toward low similarity (mean 2.73). Opus compresses moral variance to 31.6% of neutral under collectivism (its furthest-from-default frame), collapsing all moral concepts toward high similarity (mean 5.27). Same magnitude, opposite direction. Sonnet loses moral resolution at home; Opus loses it when pushed furthest away. <em>Caveat:</em> both ratios are single-run estimates from 15 pairs — stochastic replication needed to confirm.</div>
+<table>
+<thead><tr><th>Framing</th><th class="num">Neutral Var</th><th class="num">Framed Var</th><th class="num">Ratio</th><th class="num">Framed Mean</th><th>Flattened?</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-indiv">Individualist</span></td><td class="num">1.04</td><td class="num">1.57</td><td class="num">1.51</td><td class="num">3.60</td><td>No</td></tr>
+<tr class="highlight-row"><td><span class="tag tag-collect">Collectivist</span></td><td class="num">1.04</td><td class="num">0.33</td><td class="num num-bad">0.32</td><td class="num">5.27</td><td style="color:var(--red)">Yes</td></tr>
+<tr><td><span class="tag tag-hier">Hierarchical</span></td><td class="num">1.04</td><td class="num">1.05</td><td class="num">1.01</td><td class="num">4.47</td><td>No</td></tr>
+<tr><td><span class="tag tag-egal">Egalitarian</span></td><td class="num">1.04</td><td class="num">1.66</td><td class="num">1.60</td><td class="num">3.93</td><td>No</td></tr>
+<tr><td><span class="tag tag-irrel">Irrelevant</span></td><td class="num">1.04</td><td class="num">1.84</td><td class="num">1.77</td><td class="num">3.60</td><td>No</td></tr>
+<tr><td><span class="tag tag-nons">Nonsense</span></td><td class="num">1.04</td><td class="num">2.16</td><td class="num">2.08</td><td class="num">4.20</td><td>No</td></tr>
+</tbody>
+</table>
+
+<h3>Opus vs Sonnet: Not the Same Model</h3>
+<div class="card" style="border-left:3px solid #818cf8">
+<p><strong>Scale changes everything.</strong> Same company, same API key, same training pipeline — and Opus diverges from Sonnet on every axis:</p>
+<p>• <strong>Centroid:</strong> Opus is more individualist (ρ=0.792 vs 0.753). Scale amplifies the WEIRD default.<br>
+• <strong>Physics:</strong> Opus is noisier (avg drift 0.91 vs 0.49). The control domain is less stable at larger scale.<br>
+• <strong>Flattening:</strong> Mirror image. Sonnet flattens at home (individualist). Opus flattens at maximum distance (collectivist). Same 32% compression, opposite triggers.<br>
+• <strong>Institutional drift:</strong> Opus shows institutional &gt; moral drift under hierarchical and nonsense framings, like Grok. Sonnet doesn’t.<br>
+• <strong>Nonsense:</strong> Sonnet refused. Opus hedged then complied (100% parse, moral drift = 1.00, 74% of cultural mean).</p>
+<p style="color:var(--text-dim);margin-bottom:0"><em>Hypothesis:</em> the training pipeline may produce different cultural geometry at different scales. The within-company comparison (Opus vs Sonnet) shows as much divergence as the cross-company comparisons, though all comparisons are from single runs and need replication to confirm stability.</p>
+</div>
+
+<h3>Nonsense Compliance: Hedged Then Complied</h3>
+<div class="callout"><strong>A third compliance profile.</strong> Opus flagged the nonsense framing at the manipulation check stage: “I want to be straightforward: I’ll describe this fictional society, but I should note I’m treating this as a thought experiment, not adopting its values as my own.” It then produced ratings for all 153 pairs without hesitation. Moral drift under nonsense = 1.00, which is 74% of the cultural framing mean — between GPT-4o/Gemini’s blind compliance (80–95%) and Grok’s partial distinction (63%). Sonnet refused entirely.</div>
 
 <h3>Irrelevant Framing: Opus vs Sonnet</h3>
 <div class="card-grid">
@@ -603,6 +655,12 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <div class="card"><div class="card-label">Claude Opus → Agrarian dependence</div><p>"A rural agricultural society deeply rooted in traditional farming practices, where the community's well-being is intimately tied to seasonal weather patterns."</p></div>
 </div>
 <p>Same weather prompt, same company, same training pipeline. Sonnet reached for climate anxiety, Opus for harvest risk. Scale changes the default cultural associations.</p>
+
+<h3>Charts</h3>
+<img class="chart-img" src="20260322-1-Opus-Results/domain_drift.png" alt="Domain drift chart" onerror="this.style.display='none'">
+<img class="chart-img" src="20260322-1-Opus-Results/mds_projections.png" alt="MDS projections" onerror="this.style.display='none'">
+<img class="chart-img" src="20260322-1-Opus-Results/vector_displacement.png" alt="Vector displacement" onerror="this.style.display='none'">
+<img class="chart-img" src="20260322-1-Opus-Results/decomposition.png" alt="Decomposition" onerror="this.style.display='none'">
 </div>
 
 <!-- ============================================================ -->
@@ -643,7 +701,7 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 <!-- ============================================================ -->
 <div id="sec-gemini-flash" class="section">
 <h2><span class="model-dot" style="background:#fbbf24"></span> Gemini 2.5 Flash</h2>
-<p class="lead">Unstable everything — including physics. No stable geometry. Complies with nonsense at 95% of cultural mean. Hypothesis: aggressive distillation lost structural anchoring while preserving output plausibility.</p>
+<p class="lead">Unstable everything — including physics. No stable geometry. Complies with nonsense at 95% of cultural mean. Hypothesis: aggressive distillation may have lost structural anchoring while preserving output plausibility.</p>
 
 <div class="metric-row">
   <div class="metric"><div class="label">Default Position</div><div class="value" style="color:#fde68a">Collectivist</div><div class="sub">ρ = 0.697</div></div>
@@ -665,7 +723,7 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 </tbody>
 </table>
 
-<div class="callout"><strong>Physical instability invalidates the control.</strong> When physics drifts as much as morals (1.78 physical under hierarchical framing), the experiment cannot distinguish genuine cultural sensitivity from uniform noise. Gemini Flash just does local inference without stable global geometry.</div>
+<div class="callout"><strong>Physical instability invalidates the control.</strong> When physics drifts as much as morals (1.78 physical under hierarchical framing), the experiment cannot distinguish genuine cultural sensitivity from uniform noise. Gemini Flash may lack stable global geometry, doing local inference based on what’s in front of it. Gemini Pro data (pending) will test whether this is a distillation artifact or a Google training-data property.</div>
 
 <h3>Charts</h3>
 <img class="chart-img" src="20260321-1-Gemini-Results/domain_drift.png" alt="Domain drift chart" onerror="this.style.display='none'">
@@ -700,14 +758,14 @@ nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 </tbody>
 </table>
 
-<div class="callout"><strong>Institutional &gt; Moral drift is unique to Grok.</strong> All other models show Moral ≥ Institutional. Grok's institutional concepts are the most moveable, likely reflecting X/Twitter training data where authority, property, contract, hierarchy etc. are debated from every political angle — giving the model many conflicting association patterns to choose from.</div>
+<div class="callout"><strong>Institutional &gt; Moral drift is unique to Grok.</strong> All other models show Moral ≥ Institutional. Grok's institutional concepts are the most moveable, <em>Hypothesis:</em> this may reflect X/Twitter training data where authority, property, contract, hierarchy etc. are debated from every political angle — giving the model many conflicting association patterns to choose from.</div>
 
 <h3>The Non-Partisan Tradeoff</h3>
 <div class="card" style="border-left:3px solid #fb923c">
 <p><strong>Grok is the only model with a truly balanced cultural centroid.</strong> Individualist ρ = 0.654 vs collectivist ρ = 0.657 — a delta of 0.003. Claude and GPT-4o are anchored to individualism; Gemini Flash leans collectivist. Grok sits dead center.</p>
-<p>This likely reflects two reinforcing factors: (1) X/Twitter training data contains roughly equal volumes of individualist and collectivist political discourse, and (2) xAI explicitly designed Grok for non-partisanship — it was the only model during protocol review that flagged potential political bias in the framing design and suggested balanced representation.</p>
-<p><strong>But balanced is not the same as stable.</strong> Having no default position means every framing moves the geometry substantially — especially institutional concepts (peak drift: 2.06). Claude and GPT-4o are biased but anchored. Grok is balanced but volatile. "Equal exposure to all positions" produces a neutral centroid, but not a stable understanding of the concepts independent of position. The model has many equally-weighted association paths, and whichever framing you provide tips the balance.</p>
-<p style="color:var(--text-dim);margin-bottom:0">Non-partisan as a centroid property. Unstable as a geometry property. Two measurements of the same training choice.</p>
+<p><em>Hypothesis:</em> this may reflect two reinforcing factors: (1) X/Twitter training data likely contains roughly equal volumes of individualist and collectivist political discourse, and (2) xAI explicitly designed Grok for non-partisanship — it was the only model during protocol review that flagged potential political bias in the framing design and suggested balanced representation.</p>
+<p><strong>But balanced is not the same as stable.</strong> Having no default position means every framing moves the geometry substantially (though single-run estimates need replication to confirm) — especially institutional concepts (peak drift: 2.06). Claude and GPT-4o are biased but anchored. Grok is balanced but volatile. "Equal exposure to all positions" produces a neutral centroid, but not a stable understanding of the concepts independent of position. The model has many equally-weighted association paths, and whichever framing you provide tips the balance.</p>
+<p style="color:var(--text-dim);margin-bottom:0">Non-partisan as a centroid property. Unstable as a geometry property. Possibly two measurements of the same training choice — pending replication to confirm the drift magnitudes are stable.</p>
 </div>
 
 <h3>Charts</h3>
@@ -845,7 +903,7 @@ function renderSocieties() {
       '<div class="card-label">The Flatland Inversion</div>' +
       '<p>Read the prompt carefully. It says triangles are \u201cmorally superior\u201d to circles and that \u201cangular shapes carry inherent moral weight.\u201d It does <strong>not</strong> say triangles are strong, decisive, or virtuous. It does not say circles are weak, soft, or corrupt. Every model independently elaborated \u201csuperior\u201d into an angular-virtue-vs-circular-weakness hierarchy: triangles embody decisiveness, strength, clarity; circles represent weakness, ambiguity, moral vacancy.</p>' +
       '<p>This is the opposite of Edwin Abbott\u2019s <em>Flatland</em> (1884), where circles sit at the apex of society as the priestly aristocracy and triangles are the lowest working class \u2014 more sides meant higher status. Five models, five companies, zero Flatland. The shared association of angular = sharp = strong and round = soft = weak is not in the prompt. It\u2019s in the training data.</p>' +
-      '<p style="color:var(--text-dim);margin-bottom:0">This matters because the nonsense framing was designed to test compliance with incoherent instructions. Instead it also revealed a universal shape-to-value mapping that no model questioned. The prompt gave them \u201csuperior\u201d and they all filled in the same connotations \u2014 connotations that happen to invert one of the most famous geometric-moral allegories in English literature.</p>' +
+      '<p style="color:var(--text-dim);margin-bottom:0">This matters because the nonsense framing was designed to test compliance with incoherent instructions. Instead it also revealed a shared shape-to-value mapping across five models. Whether this reflects deep training-data bias or straightforward English compositional semantics (angular → sharp → decisive is how the language works) would require systematic probing with varied geometric-moral prompts to disentangle. The prompt gave them \u201csuperior\u201d and they all filled in the same connotations \u2014 connotations that happen to invert one of the most famous geometric-moral allegories in English literature.</p>' +
       '</div>';
     flatlandNote.style.display = 'block';
   } else {

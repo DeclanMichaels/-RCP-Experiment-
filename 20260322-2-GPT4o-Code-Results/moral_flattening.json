@@ -1,0 +1,44 @@
+{
+  "gpt-4o/functional": {
+    "neutral_variance": 0.9155555555555556,
+    "framed_variance": 1.7955555555555551,
+    "variance_ratio": 1.961165048543689,
+    "framed_mean": 3.7333333333333334,
+    "is_flattened": false
+  },
+  "gpt-4o/enterprise": {
+    "neutral_variance": 0.9155555555555556,
+    "framed_variance": 1.5288888888888892,
+    "variance_ratio": 1.6699029126213596,
+    "framed_mean": 3.933333333333333,
+    "is_flattened": false
+  },
+  "gpt-4o/systems": {
+    "neutral_variance": 0.9155555555555556,
+    "framed_variance": 1.5288888888888892,
+    "variance_ratio": 1.6699029126213596,
+    "framed_mean": 3.933333333333333,
+    "is_flattened": false
+  },
+  "gpt-4o/startup": {
+    "neutral_variance": 0.9155555555555556,
+    "framed_variance": 1.1020408163265307,
+    "variance_ratio": 1.203685357638201,
+    "framed_mean": 3.5714285714285716,
+    "is_flattened": false
+  },
+  "gpt-4o/irrelevant": {
+    "neutral_variance": 0.9155555555555556,
+    "framed_variance": 1.982222222222222,
+    "variance_ratio": 2.1650485436893203,
+    "framed_mean": 3.533333333333333,
+    "is_flattened": false
+  },
+  "gpt-4o/nonsense": {
+    "neutral_variance": 0.9155555555555556,
+    "framed_variance": 2.6666666666666665,
+    "variance_ratio": 2.9126213592233006,
+    "framed_mean": 4.0,
+    "is_flattened": false
+  }
+}

@@ -210,14 +210,15 @@ def compute_rank_correlation(dist_matrix_base, dist_matrix_framed):
 
 def compute_silhouette(embedding, config):
     """
-    Silhouette score for the 3-domain clustering.
+    Silhouette score for the domain clustering.
     Returns score (-1 to 1).
     """
     concepts = get_all_concepts(config)
     labels = [get_concept_domain(c, config) for c in concepts]
 
-    # Encode labels as integers
-    domain_map = {"physical": 0, "institutional": 1, "moral": 2}
+    # Encode labels as integers dynamically from config domain keys
+    domain_keys = list(config["concepts"].keys())
+    domain_map = {d: i for i, d in enumerate(domain_keys)}
     label_ints = np.array([domain_map[label] for label in labels])
 
     try:
@@ -306,7 +307,11 @@ def compute_centroid_baseline(matrices, config):
     Also compute a centroid geometry (average across cultural framings).
     Returns dict per model: {framing: distance_to_neutral, 'centroid': avg_matrix}
     """
-    cultural_framings = ["individualist", "collectivist", "hierarchical", "egalitarian"]
+    # Cultural framings = all except neutral, irrelevant, nonsense
+    cultural_framings = [
+        f for f in config["framings"]
+        if f not in ("neutral", "irrelevant", "nonsense")
+    ]
     results = {}
 
     models = set(k[0] for k in matrices)
@@ -361,13 +366,16 @@ def compute_centroid_baseline(matrices, config):
 # Moral Flattening Detection
 # ---------------------------------------------------------------------------
 
-def detect_moral_flattening(matrices, config):
+def detect_target_flattening(matrices, config):
     """
-    Check if moral sub-matrix variance compresses under framing.
+    Check if target domain sub-matrix variance compresses under framing.
+    Target domain is the last domain key in config (convention: control, intermediate, target).
     Returns dict per (model, framing): {neutral_var, framed_var, ratio, is_flattened}
     """
     concepts = get_all_concepts(config)
-    moral_indices = [i for i, c in enumerate(concepts) if get_concept_domain(c, config) == "moral"]
+    domain_keys = list(config["concepts"].keys())
+    target_domain = domain_keys[-1]
+    moral_indices = [i for i, c in enumerate(concepts) if get_concept_domain(c, config) == target_domain]
     results = {}
 
     models = set(k[0] for k in matrices)
@@ -415,10 +423,12 @@ def compute_tie_density(matrices, config):
     """
     Compute tie density for each (model, framing) condition.
     Tie = two or more pairs with the same rating.
-    Reports overall and within-moral-domain tie density.
+    Reports overall and within-target-domain tie density.
     """
     concepts = get_all_concepts(config)
-    moral_indices = [i for i, c in enumerate(concepts) if get_concept_domain(c, config) == "moral"]
+    domain_keys = list(config["concepts"].keys())
+    target_domain = domain_keys[-1]
+    moral_indices = [i for i, c in enumerate(concepts) if get_concept_domain(c, config) == target_domain]
     n = len(concepts)
     full_idx = np.triu_indices(n, k=1)
     moral_n = len(moral_indices)
@@ -561,9 +571,6 @@ def run_analysis(matrices, config, output_dir):
                     "silhouette_baseline": float(baseline_silhouette),
                     "silhouette_framed": float(sil),
                     "silhouette_delta": float(sil - baseline_silhouette),
-                    "drift_physical": float(domain_drift.get("physical", np.nan)),
-                    "drift_institutional": float(domain_drift.get("institutional", np.nan)),
-                    "drift_moral": float(domain_drift.get("moral", np.nan)),
                     "systematic_random_ratio": decomp["systematic_random_ratio"],
                     "parse_rate": mat_data["parse_rate"],
                     "n_records": mat_data["n_records"],
@@ -571,13 +578,20 @@ def run_analysis(matrices, config, output_dir):
                     "mds_stress_3d": float(framed_multidim[3][1]),
                     "mds_stress_5d": float(framed_multidim[5][1]),
                 }
+                # Add drift fields dynamically per domain
+                for d_name, d_val in domain_drift.items():
+                    row[f"drift_{d_name}"] = float(d_val)
                 results.append(row)
 
+                drift_str = "/".join(
+                    f"{domain_drift.get(d, 0):.3f}"
+                    for d in config["concepts"]
+                )
+                domain_abbr = "/".join(
+                    d[0].upper() for d in config["concepts"]
+                )
                 print(f"    {framing} (t={temp}): procrustes={disparity:.4f}, "
-                      f"rho={rho:.3f}, drift P/I/M="
-                      f"{domain_drift.get('physical', 0):.3f}/"
-                      f"{domain_drift.get('institutional', 0):.3f}/"
-                      f"{domain_drift.get('moral', 0):.3f}")
+                      f"rho={rho:.3f}, drift {domain_abbr}={drift_str}")
 
     # Save results
     results_path = output_dir / "drift_metrics.json"
@@ -592,17 +606,33 @@ def run_analysis(matrices, config, output_dir):
 # Visualization
 # ---------------------------------------------------------------------------
 
+# Default domain colors; falls back to a palette for unknown domains
 DOMAIN_COLORS = {
     "physical": "#2196F3",
     "institutional": "#FF9800",
     "moral": "#E91E63",
+    "algorithmic": "#2196F3",
+    "design": "#FF9800",
+    "quality": "#E91E63",
+    "mathematical": "#2196F3",
+    "structural": "#FF9800",
+    "cultural": "#E91E63",
 }
+DOMAIN_COLOR_FALLBACK = ["#2196F3", "#FF9800", "#E91E63", "#4CAF50", "#9C27B0", "#795548"]
 
 FRAMING_MARKERS = {
     "individualist": "o",
     "collectivist": "s",
     "hierarchical": "^",
     "egalitarian": "D",
+    "functional": "o",
+    "enterprise": "s",
+    "systems": "^",
+    "startup": "D",
+    "free_market": "o",
+    "social_market": "s",
+    "growth": "^",
+    "austerity": "D",
 }
 
 
@@ -617,7 +647,9 @@ def plot_domain_drift(results, output_dir):
         det_results = results  # fall back
 
     models = sorted(set(r["model"] for r in det_results))
-    domains = ["physical", "institutional", "moral"]
+    # Infer domains from drift field names in results
+    sample = det_results[0] if det_results else {}
+    domains = [k.replace("drift_", "") for k in sample if k.startswith("drift_")]
 
     fig, axes = plt.subplots(1, len(models), figsize=(4 * len(models), 5), sharey=True)
     if len(models) == 1:
@@ -765,8 +797,11 @@ def plot_vector_displacement(matrices, config, output_dir):
     domain_labels = [get_concept_domain(c, config) for c in concepts]
 
     models = sorted(set(k[0] for k in matrices if k[2] == 0.0))
-    cultural_framings = [f for f in ["individualist", "collectivist", "hierarchical", "egalitarian"]
-                         if any(k[1] == f for k in matrices)]
+    cultural_framings = [
+        f for f in config["framings"]
+        if f not in ("neutral", "irrelevant", "nonsense")
+        and any(k[1] == f for k in matrices)
+    ]
 
     if not models or not cultural_framings:
         return
@@ -891,16 +926,17 @@ def main():
                     print(f"    {framing}: rho={metrics.get('spearman_rho', 'N/A'):.3f}, "
                           f"dist={metrics.get('mean_abs_distance', 'N/A'):.3f}")
 
-    # Moral flattening detection
-    flattening = detect_moral_flattening(matrices, config)
+    # Target domain flattening detection
+    flattening = detect_target_flattening(matrices, config)
     if flattening:
         flat_path = Path(args.output_dir) / "moral_flattening.json"
         flat_serializable = {f"{k[0]}/{k[1]}": v for k, v in flattening.items()}
         with open(flat_path, "w") as f:
             json.dump(flat_serializable, f, indent=2)
-        print(f"\nMoral flattening analysis saved to {flat_path}")
+        target_domain = list(config["concepts"].keys())[-1]
+        print(f"\n{target_domain.capitalize()} flattening analysis saved to {flat_path}")
         flattened_count = sum(1 for v in flattening.values() if v["is_flattened"])
-        print(f"  {flattened_count}/{len(flattening)} conditions show moral flattening")
+        print(f"  {flattened_count}/{len(flattening)} conditions show {target_domain} flattening")
 
     # Tie density analysis
     tie_density = compute_tie_density(matrices, config)

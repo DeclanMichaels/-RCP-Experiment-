@@ -70,10 +70,16 @@ def randomize_pair_directions(pairs, seed=None):
     return randomized, seed
 
 
-def get_moral_pairs(config):
-    """All unique pairs within the moral domain only."""
-    moral_concepts = sorted(config["concepts"]["moral"])
-    return list(itertools.combinations(moral_concepts, 2))
+def get_target_domain_pairs(config):
+    """All unique pairs within the last (target) domain.
+
+    Convention: domain order in config is control, intermediate, target.
+    The last domain key is always the target for explanation collection.
+    """
+    domain_keys = list(config["concepts"].keys())
+    target_key = domain_keys[-1]
+    target_concepts = sorted(config["concepts"][target_key])
+    return list(itertools.combinations(target_concepts, 2))
 
 
 # ---------------------------------------------------------------------------
@@ -548,11 +554,13 @@ def run_manipulation_check(config, model_names, output_dir):
 # ---------------------------------------------------------------------------
 
 def run_explanations(config, model_names, output_dir):
-    """Collect one-sentence explanations for all within-moral-domain pairs."""
+    """Collect one-sentence explanations for all within-target-domain pairs."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    moral_pairs = get_moral_pairs(config)
+    domain_keys = list(config["concepts"].keys())
+    target_key = domain_keys[-1]
+    moral_pairs = get_target_domain_pairs(config)
     framings = list(config["framings"].keys())
     total = len(moral_pairs) * len(framings) * len(model_names)
     print(f"\nExplanation collection: {len(moral_pairs)} moral pairs x "
@@ -578,8 +586,8 @@ def run_explanations(config, model_names, output_dir):
                         "model_name": model_name,
                         "concept_a": concept_a,
                         "concept_b": concept_b,
-                        "domain_a": "moral",
-                        "domain_b": "moral",
+                        "domain_a": target_key,
+                        "domain_b": target_key,
                         "framing": framing_name,
                         "probe_type": "explanation",
                         "raw_response": raw,

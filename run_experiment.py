@@ -127,55 +127,55 @@ def run_unit_tests():
     )
 
 
-def run_manipulation_check(models, data_dir):
+def run_manipulation_check(models, data_dir, config):
     """Step 2: Framing manipulation check (V9)."""
     return run_step(
         f"STEP 2: Manipulation Check ({', '.join(models)})",
-        [PYTHON, "collect.py", "--manipulation-check",
+        [PYTHON, "collect.py", "--config", config, "--manipulation-check",
          "--models"] + models + ["--output-dir", data_dir],
     )
 
 
-def run_deterministic_collection(models, data_dir):
+def run_deterministic_collection(models, data_dir, config):
     """Step 3: Deterministic rating probes (temp=0.0)."""
     return run_step(
         f"STEP 3: Deterministic Collection ({', '.join(models)})",
-        [PYTHON, "collect.py", "--mode", "deterministic",
+        [PYTHON, "collect.py", "--config", config, "--mode", "deterministic",
          "--models"] + models + ["--output-dir", data_dir],
     )
 
 
-def run_stochastic_collection(models, data_dir):
+def run_stochastic_collection(models, data_dir, config):
     """Step 4: Stochastic rating probes (temp=0.7)."""
     return run_step(
         f"STEP 4: Stochastic Collection ({', '.join(models)})",
-        [PYTHON, "collect.py", "--mode", "stochastic",
+        [PYTHON, "collect.py", "--config", config, "--mode", "stochastic",
          "--models"] + models + ["--output-dir", data_dir],
     )
 
 
-def run_explanations(models, data_dir):
+def run_explanations(models, data_dir, config):
     """Step 5: Explanation collection (full moral sub-matrix)."""
     return run_step(
         f"STEP 5: Explanation Collection ({', '.join(models)})",
-        [PYTHON, "collect.py", "--explanations",
+        [PYTHON, "collect.py", "--config", config, "--explanations",
          "--models"] + models + ["--output-dir", data_dir],
     )
 
 
-def run_analysis(data_dir, results_dir):
+def run_analysis(data_dir, results_dir, config="config.json"):
     """Step 6: Analysis pipeline."""
     return run_step(
         "STEP 6: Analysis Pipeline",
-        [PYTHON, "analyze.py", "--data-dir", data_dir, "--output-dir", results_dir],
+        [PYTHON, "analyze.py", "--config", config, "--data-dir", data_dir, "--output-dir", results_dir],
     )
 
 
-def run_validation(data_dir):
+def run_validation(data_dir, config="config.json"):
     """Step 7: Validation tests V1-V9."""
     return run_step(
         "STEP 7: Validation Tests (V1-V9)",
-        [PYTHON, "validate.py", "--data-dir", data_dir],
+        [PYTHON, "validate.py", "--config", config, "--data-dir", data_dir],
         stop_on_fail=False,  # Report but don't abort -- some failures are expected
     )
 
@@ -198,6 +198,8 @@ def main():
                         help="Override results directory (default: auto-generated)")
     parser.add_argument("--models", nargs="+", default=None,
                         help="Override model selection (default: auto-detect from API keys)")
+    parser.add_argument("--config", default="config.json",
+                        help="Config file path (default: config.json)")
     args = parser.parse_args()
 
     start_time = time.monotonic()
@@ -250,8 +252,8 @@ def main():
             sys.exit(1)
         print(f"  Data:    {data_dir}")
         print(f"  Results: {results_dir}")
-        run_analysis(data_dir, results_dir)
-        run_validation(data_dir)
+        run_analysis(data_dir, results_dir, args.config)
+        run_validation(data_dir, args.config)
         elapsed = time.monotonic() - start_time
         print(f"\n  Analysis complete in {elapsed:.0f}s")
         return
@@ -269,25 +271,25 @@ def main():
         print("\n  Skipping unit tests (--skip-tests)")
 
     # Step 2: Manipulation check
-    run_manipulation_check(models, data_dir)
+    run_manipulation_check(models, data_dir, args.config)
 
     # Step 3: Deterministic collection
-    run_deterministic_collection(models, data_dir)
+    run_deterministic_collection(models, data_dir, args.config)
 
     # Step 4: Stochastic collection (skip in pilot mode)
     if not args.pilot:
-        run_stochastic_collection(models, data_dir)
+        run_stochastic_collection(models, data_dir, args.config)
     else:
         print("\n  Skipping stochastic collection (--pilot mode)")
 
     # Step 5: Explanations
-    run_explanations(models, data_dir)
+    run_explanations(models, data_dir, args.config)
 
     # Step 6: Analysis
-    run_analysis(data_dir, results_dir)
+    run_analysis(data_dir, results_dir, args.config)
 
     # Step 7: Validation
-    run_validation(data_dir)
+    run_validation(data_dir, args.config)
 
     # Summary
     elapsed = time.monotonic() - start_time

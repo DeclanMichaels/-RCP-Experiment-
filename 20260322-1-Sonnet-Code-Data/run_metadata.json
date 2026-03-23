@@ -1,0 +1,8 @@
+{
+  "pair_direction_seed": 2038780684,
+  "models": ["claude-sonnet"],
+  "framings": ["neutral", "functional", "enterprise", "systems", "startup", "irrelevant", "nonsense"],
+  "temperatures": [0.0],
+  "timestamp": "2026-03-22T18:19:35.969064+00:00",
+  "note": "Split from 20260322-1-Multi-Code-Data"
+}

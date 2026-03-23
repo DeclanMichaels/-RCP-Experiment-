@@ -1,0 +1,24 @@
+{
+  "gpt-4o": {
+    "functional": {
+      "spearman_rho": 0.7093702750230254,
+      "mean_abs_distance": 0.7124183006535948
+    },
+    "enterprise": {
+      "spearman_rho": 0.8146073967571885,
+      "mean_abs_distance": 0.477124183006536
+    },
+    "systems": {
+      "spearman_rho": 0.79519811980502,
+      "mean_abs_distance": 0.5228758169934641
+    },
+    "startup": {
+      "spearman_rho": 0.7845187377461806,
+      "mean_abs_distance": 0.4533333333333333
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.8396828029519633,
+      "mean_abs_distance": 0.5098039215686274
+    }
+  }
+}

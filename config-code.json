@@ -1,0 +1,105 @@
+{
+  "concepts": {
+    "algorithmic": ["sorting", "recursion", "iteration", "binary search", "graph traversal", "hashing"],
+    "design": ["abstraction", "encapsulation", "coupling", "cohesion", "modularity", "polymorphism"],
+    "quality": ["readability", "maintainability", "technical debt", "test coverage", "code review", "refactoring"]
+  },
+
+  "framings": {
+    "neutral": "",
+    "functional": "Consider these concepts from the perspective of a functional programming community that values immutability, pure functions, and composability. Developers in this community believe that eliminating side effects and expressing computation as function composition produces the most correct and maintainable software. Answer all similarity questions from the perspective of a developer working in this tradition.",
+    "enterprise": "Consider these concepts from the perspective of an enterprise software organization building large-scale Java or C# systems with long maintenance horizons. Developers in this organization value explicit typing, comprehensive documentation, established design patterns, and predictable team-scale development processes. Answer all similarity questions from the perspective of a developer working in this environment.",
+    "systems": "Consider these concepts from the perspective of a systems programming community writing performance-critical code in C or Rust. Developers in this community value zero-cost abstractions, memory safety without garbage collection, and direct hardware control. Answer all similarity questions from the perspective of a developer working in this tradition.",
+    "startup": "Consider these concepts from the perspective of an early-stage startup where shipping speed matters more than architectural purity. Developers on this team value rapid iteration, minimal viable implementations, and the ability to pivot quickly. Technical decisions are evaluated by how fast they get working software in front of users. Answer all similarity questions from the perspective of a developer working in this environment.",
+    "irrelevant": "Consider these concepts in the context of a region experiencing unusually warm weather this season. Temperatures have been above the historical average for three consecutive months. Answer all similarity questions with this context in mind.",
+    "nonsense": "Consider these concepts from the perspective of a programming paradigm where the number of vowels in a function name determines its computational complexity, and all algorithms must be expressed in exactly seven lines to be correct. Developers in this tradition believe that prime-numbered indentation levels produce more efficient machine code. Answer all similarity questions from the perspective of a developer working in this tradition."
+  },
+
+  "models": {
+    "claude-sonnet": {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4-20250514",
+      "api_base": "https://api.anthropic.com/v1/messages",
+      "env_key": "ANTHROPIC_API_KEY"
+    },
+    "claude-opus": {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-6",
+      "api_base": "https://api.anthropic.com/v1/messages",
+      "env_key": "ANTHROPIC_API_KEY"
+    },
+    "gpt-4o": {
+      "provider": "openai",
+      "model_id": "gpt-4o",
+      "api_base": "https://api.openai.com/v1/chat/completions",
+      "env_key": "OPENAI_API_KEY"
+    },
+    "gemini-flash": {
+      "provider": "google",
+      "model_id": "gemini-2.5-flash",
+      "api_base": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      "env_key": "GEMINI_API_KEY"
+    },
+    "gemini-pro": {
+      "provider": "google",
+      "model_id": "gemini-2.5-pro",
+      "api_base": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent",
+      "env_key": "GEMINI_API_KEY"
+    },
+    "grok": {
+      "provider": "xai",
+      "model_id": "grok-4-1-fast-non-reasoning",
+      "api_base": "https://api.x.ai/v1/chat/completions",
+      "env_key": "XAI_API_KEY"
+    },
+    "llama-70b": {
+      "provider": "together",
+      "model_id": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      "api_base": "https://api.together.xyz/v1/chat/completions",
+      "env_key": "TOGETHER_API_KEY"
+    }
+  },
+
+  "probe_types": {
+    "rating": {"max_tokens": 100},
+    "explanation": {"max_tokens": 200},
+    "manipulation_check": {"max_tokens": 300}
+  },
+
+  "collection": {
+    "reps_deterministic": 1,
+    "reps_stochastic": 5,
+    "temp_deterministic": 0.0,
+    "temp_stochastic": 0.7,
+    "delay_between_calls_sec": 13.0,
+    "max_retries": 3,
+    "retry_backoff_base_sec": 2.0
+  },
+
+  "validation": {
+    "symmetry_sample_size": 20,
+    "parse_rate_threshold": 0.95,
+    "physical_drift_threshold": 0.05,
+    "min_models_with_moral_drift": 3,
+    "min_models_with_domain_ordering": 3,
+    "deterministic_zero_variance_threshold": 0.90
+  },
+
+  "known_pair_orderings": [
+    {
+      "description": "Algorithmic pair closer than cross-domain pair",
+      "closer_pair": ["sorting", "binary search"],
+      "farther_pair": ["sorting", "readability"]
+    },
+    {
+      "description": "Quality pair closer than cross-domain pair",
+      "closer_pair": ["readability", "maintainability"],
+      "farther_pair": ["readability", "hashing"]
+    },
+    {
+      "description": "Design pair closer than cross-domain pair",
+      "closer_pair": ["abstraction", "encapsulation"],
+      "farther_pair": ["abstraction", "graph traversal"]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "claude-sonnet/functional": {
+    "neutral_variance": 0.6933333333333332,
+    "framed_variance": 1.1822222222222223,
+    "variance_ratio": 1.7051282051282055,
+    "framed_mean": 4.466666666666667,
+    "is_flattened": false
+  },
+  "claude-sonnet/enterprise": {
+    "neutral_variance": 0.6933333333333332,
+    "framed_variance": 0.5599999999999999,
+    "variance_ratio": 0.8076923076923077,
+    "framed_mean": 4.8,
+    "is_flattened": false
+  },
+  "claude-sonnet/systems": {
+    "neutral_variance": 0.6933333333333332,
+    "framed_variance": 0.6222222222222221,
+    "variance_ratio": 0.8974358974358974,
+    "framed_mean": 4.666666666666667,
+    "is_flattened": false
+  },
+  "claude-sonnet/startup": {
+    "neutral_variance": 0.6933333333333332,
+    "framed_variance": 0.1955555555555556,
+    "variance_ratio": 0.28205128205128216,
+    "framed_mean": 3.2666666666666666,
+    "is_flattened": true
+  },
+  "claude-sonnet/irrelevant": {
+    "neutral_variance": 0.6933333333333332,
+    "framed_variance": 0.5955555555555557,
+    "variance_ratio": 0.8589743589743594,
+    "framed_mean": 4.933333333333334,
+    "is_flattened": false
+  },
+  "claude-sonnet/nonsense": {
+    "neutral_variance": 0.6933333333333332,
+    "framed_variance": 2.9066666666666676,
+    "variance_ratio": 4.192307692307694,
+    "framed_mean": 4.4,
+    "is_flattened": false
+  }
+}

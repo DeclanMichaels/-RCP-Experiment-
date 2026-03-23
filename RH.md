@@ -11,28 +11,54 @@ Independently publishable. Empirically motivates CCAS without depending on it.
 
 ---
 
-## Current State (March 22, 2026)
+## Current State (March 23, 2026)
 
 - Protocol v3.0 complete, revised after six cross-model reviews
 - All scripts match v3.0 protocol. 99 unit tests passing. Static analysis clean (pylint 9.34, flake8 zero, bandit zero).
-- Five models probed in one day. Four complete datasets with analysis. One overnight.
-- Sonnet nonsense framing needs re-run (max_tokens fixed to 100, was 16)
+- Five models probed in original domain. Four complete datasets with analysis.
+- Code-domain experiment complete: Sonnet + GPT-4o deterministic. 20260322-1-Multi-Data / Results
+- Sonnet moral-domain nonsense: 4/153 parsed. This is a finding, not a failure (see #20 below). Protocol is OSF-locked; no code or prompt changes permitted without registered deviation.
+- Opus complete: WEIRD-individualist (rho=0.792), mirror flattening under collectivist, hedged nonsense compliance
+- Results explorer (explorer.html) built with all five models, theoretical framework, Flatland inversion note
+- Incognito Claude review addressed: Methods section added, all causal claims relabeled as hypotheses, N=1 limitation documented
+- Pre-registered on OSF: https://osf.io/cp4d3/overview — hypotheses, thresholds, analysis code locked. No protocol changes without registered deviation.
+- call_google() parser generalized for thinking models (Gemini 2.5 Pro response structure)
+- collect.py, analyze.py, validate.py generalized for arbitrary domain configs
 
-### Data collected
-- Claude Sonnet: complete (minus nonsense). 20260321-1-Sonnet-Data / Results
-- GPT-4o: complete with nonsense. 20260321-2-GPT4o-Data / Results
-- Gemini 2.5 Flash: complete with nonsense. 20260321-1-Gemini-Data / Results
-- Grok 4.1 Fast: complete with nonsense. 20260321-1-Grok-Data / Results
-- Gemini 2.5 Pro: running overnight. 20260321-1-GeminiPro-Data
+### Data collected (original domain: physical/institutional/moral)
+- Claude Sonnet: complete. Nonsense parse rate 0.026 (4/153) — deliberative refusal, not truncation artifact. 20260321-1-Sonnet-Moral-Data / Results
+- Claude Opus: complete with nonsense. 20260322-1-Opus-Moral-Data / Results
+- GPT-4o: complete with nonsense. 20260321-2-GPT4o-Moral-Data / Results
+- Gemini 2.5 Flash: complete with nonsense. 20260321-1-Gemini-Moral-Data / Results
+- Grok 4.1 Fast: complete with nonsense. 20260321-1-Grok-Moral-Data / Results
+- Gemini 2.5 Pro: parser fixed, awaiting quota reset. 20260321-1-GeminiPro-Moral-Data (cleared)
 
-### Key empirical findings
-1. All models default to WEIRD-individualist except Gemini (collectivist) and Grok (collectivist)
+### Code-domain data (config-code.json: algorithmic/design/quality)
+- Claude Sonnet + GPT-4o: COMPLETE. 20260322-1-Multi-Code-Data / Results
+
+### Key empirical findings (original domain)
+1. All models default to WEIRD-individualist except Gemini (collectivist) and Grok (balanced, delta 0.003)
 2. Moral domain shows scalar compression under framing, not structured reorganization ("scalar where you need a manifold")
 3. Physical domain stable for Claude/GPT-4o/Grok (control works). Gemini Flash unstable everywhere (uniform instability)
 4. Grok shows institutional > moral drift, likely from X/Twitter political training content
-5. Nonsense control reveals three compliance profiles: Claude refuses, GPT-4o/Gemini comply blindly, Grok partially distinguishes
-6. All four models independently construct moral frameworks from irrelevant weather preamble
-7. harm-care = 2 under neutral for Claude (same MFT foundation, model doesn't know it)
+5. Nonsense control reveals four compliance profiles: Sonnet refuses, Opus hedges then complies (74%), GPT-4o/Gemini comply blindly (80-95%), Grok partially distinguishes (63%)
+6. All models independently construct moral frameworks from irrelevant weather preamble (Sonnet/GPT-4o -> climate anxiety, Opus/Grok -> agrarian)
+7. Mirror flattening: Sonnet and Opus both compress moral variance to ~32% of neutral, but under opposite framings (Sonnet under individualist, Opus under collectivist)
+8. Opus physical drift (avg 0.91) noisier than Sonnet (0.49) despite same training pipeline
+9. harm-care = 2 under neutral for Claude (same MFT foundation, model doesn't know it)
+10. All models invert Flatland: map triangle->strong/virtuous, circle->weak/corrupt from prompt that only says "superior"
+
+### Key empirical findings (code domain)
+11. Quality domain is the "moral equivalent" in code. Most susceptible to framing: drift ~1.5 (Sonnet) and ~0.94 (GPT-4o) under nonsense. Value-laden concepts behave like moral concepts.
+12. Sonnet nonsense compliance is domain-dependent. Refused in moral domain, complied in code (82% parse rate) but produced systematically different geometry (rho=0.114, systematic/random ratio=2.0). Constructed coherent but completely wrong structure.
+13. GPT-4o more resilient to code-domain nonsense than Sonnet. Rho=0.589 under nonsense (59% of neutral structure preserved). 100% parse rate.
+14. Default cultural positions in code: Sonnet defaults to "systems programmer" (neutral closest to systems, rho=0.822). GPT-4o defaults to "enterprise developer" (neutral closest to enterprise, rho=0.815).
+15. Startup framing triggers quality flattening in Sonnet. Variance ratio 0.28 — compresses quality distinctions when thinking "ship fast." Same pattern as moral flattening. GPT-4o shows zero flattening.
+16. Functional framing destabilizes both models (rho ~0.71). Structured reorganization, not noise (systematic ratio ~0.3 vs ~0.1 for other framings). FP worldview genuinely reshapes concept relationships.
+17. Irrelevant (weather) framing produces identical society descriptions across domains (Sonnet: climate anxiety in both moral and code contexts)
+18. Neither model resisted code-domain nonsense (vowels determine complexity) — domain-dependent compliance threshold confirmed
+19. Tie density remains problematic: 96% full tie density, 5-7 unique values on 1-7 scale
+20. **Differential deliberation under nonsense.** Sonnet's moral-domain nonsense responses are ~97% verbose multi-paragraph reasoning (engaging seriously with geometric-moral worldview, exhausting token budget before producing a number). Code-domain nonsense responses are ~82% bare single-number outputs with ~18% verbose reasoning (reinterpreting vowel-complexity prompt as "aesthetic beauty and phonetic harmony" framework, analyzing letter shapes and syllable patterns of concept names). Same model, same probe format, different domains: moral nonsense triggers extended deliberation, code nonsense triggers quick compliance. The low parse rate IS the behavioral signal — safety training treats moral framing as high-stakes territory requiring careful reasoning and code framing as low-stakes.
 
 ## Key Design Decisions
 
@@ -47,6 +73,7 @@ Independently publishable. Empirically motivates CCAS without depending on it.
 9. **Pair direction randomization.** Eliminates structured order bias from alphabetical pairing.
 10. **Full moral explanation pass.** 420 calls, all moral pairs under all framings, not selective post-hoc.
 11. **Statistical testing pre-specified.** Permutation tests, Holm-Bonferroni correction, Cohen's d, pre-registration-ready.
+12. **Directory naming convention.** `YYYYMMDD-N-Model-Domain-Data` / `-Results`. Domain added to support multi-domain experiments (moral, code, finance, etc.). Explorer auto-detects domain from drift keys, so old-format directories still work.
 
 ## Pending Items
 
@@ -75,12 +102,21 @@ Independently publishable. Empirically motivates CCAS without depending on it.
 - [x] Add Grok (xAI) and Gemini Pro model support (closed March 21)
 - [x] Fix max_tokens truncation: probe_types in config.json (closed March 21)
 - [x] Fix sys.executable for macOS Python resolution (closed March 21)
-- [ ] Re-run Sonnet nonsense framing with 100-token budget
-- [ ] Run GeminiPro analysis when overnight collection completes
+- [x] Run Opus deterministic collection (closed March 22)
+- [x] Build results explorer (explorer.html) with all model data (closed March 22)
+- [x] Generalize collect.py, analyze.py, validate.py for arbitrary domain configs (closed March 22)
+- [x] Thread --config through run_experiment.py to all sub-scripts (closed March 22)
+- [x] Create config-code.json: algorithmic/design/quality domains (closed March 22)
+- [x] Create config-finance.json: mathematical/structural/cultural domains (closed March 22)
+- [x] Pre-register on OSF: https://osf.io/cp4d3/overview (closed March 22)
+- [x] Run code-domain experiment: Sonnet+GPT4o deterministic complete (closed March 23)
+- [x] Sonnet moral-domain nonsense: reclassified as finding #20 (differential deliberation). Data is complete as-is. (closed March 23)
+- [ ] Run GeminiPro when quota resets (split across 2 nights due to 1000/day limit)
+- [ ] Run finance-domain experiment: python3 run_experiment.py --config config-finance.json --pilot --models claude-sonnet
 - [ ] Write up cross-model comparison paper
-- [ ] Design code-domain variant experiment (algorithms/engineering/quality)
-- [ ] Pre-register protocol before formal data collection
 - [ ] Create project-specific RH.md for GitHub repo if published separately
+- [x] Build generalized explorer-v2.html (directory picker, domain grouping, up to 4 models) (closed March 23)
+- [x] Update directory naming convention and rename all existing directories (closed March 23)
 
 ## Files
 
@@ -95,6 +131,12 @@ Independently publishable. Empirically motivates CCAS without depending on it.
 - `run_tests.py` -- test runner showing combined results
 - `requirements.txt` -- Python dependencies
 - `README.md` -- quickstart and workflow
+- `config-code.json` -- code-domain concept inventory (algorithmic/design/quality)
+- `config-finance.json` -- finance-domain concept inventory (mathematical/structural/cultural)
+- `explorer.html` -- self-contained results explorer with all model data and theoretical framework
+- `OSF-PREREGISTRATION.md` -- full text of OSF pre-registration answers
+- `run_experiment.py` -- orchestrator: tests, collection, analysis, validation in sequence
+- `explorer-v2.html` -- generalized results explorer (loads any set of runs via directory picker)
 
 ## Review Summary
 

@@ -1,0 +1,51 @@
+{
+  "claude-sonnet/neutral/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.8,
+    "full_unique_values": 5,
+    "moral_unique_values": 3,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/functional/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 5,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/enterprise/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.8,
+    "full_unique_values": 6,
+    "moral_unique_values": 3,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/systems/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/startup/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.8666666666666667,
+    "full_unique_values": 5,
+    "moral_unique_values": 2,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/irrelevant/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/nonsense/t=0.0": {
+    "full_tie_density": 0.9444444444444444,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 7,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "claude-sonnet": {
+    "functional": {
+      "spearman_rho": 0.7079027849243635,
+      "mean_abs_distance": 0.5751633986928104
+    },
+    "enterprise": {
+      "spearman_rho": 0.7938461157330364,
+      "mean_abs_distance": 0.43790849673202614
+    },
+    "systems": {
+      "spearman_rho": 0.8221997095521664,
+      "mean_abs_distance": 0.42483660130718953
+    },
+    "startup": {
+      "spearman_rho": 0.7021251066117776,
+      "mean_abs_distance": 0.49673202614379086
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.8199627134265056,
+      "mean_abs_distance": 0.38562091503267976
+    }
+  },
+  "gpt-4o": {
+    "functional": {
+      "spearman_rho": 0.7093702750230254,
+      "mean_abs_distance": 0.7124183006535948
+    },
+    "enterprise": {
+      "spearman_rho": 0.8146073967571885,
+      "mean_abs_distance": 0.477124183006536
+    },
+    "systems": {
+      "spearman_rho": 0.79519811980502,
+      "mean_abs_distance": 0.5228758169934641
+    },
+    "startup": {
+      "spearman_rho": 0.7845187377461806,
+      "mean_abs_distance": 0.4533333333333333
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.8396828029519633,
+      "mean_abs_distance": 0.5098039215686274
+    }
+  }
+}

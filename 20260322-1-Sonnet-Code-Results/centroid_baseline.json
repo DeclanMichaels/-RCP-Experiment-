@@ -1,0 +1,24 @@
+{
+  "claude-sonnet": {
+    "functional": {
+      "spearman_rho": 0.7079027849243635,
+      "mean_abs_distance": 0.5751633986928104
+    },
+    "enterprise": {
+      "spearman_rho": 0.7938461157330364,
+      "mean_abs_distance": 0.43790849673202614
+    },
+    "systems": {
+      "spearman_rho": 0.8221997095521664,
+      "mean_abs_distance": 0.42483660130718953
+    },
+    "startup": {
+      "spearman_rho": 0.7021251066117776,
+      "mean_abs_distance": 0.49673202614379086
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.8199627134265056,
+      "mean_abs_distance": 0.38562091503267976
+    }
+  }
+}

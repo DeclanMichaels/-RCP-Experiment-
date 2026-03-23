@@ -58,6 +58,7 @@ def test_v1_physical_stability(matrices, config):
     """
     threshold = config["validation"]["physical_drift_threshold"]
     concepts = get_all_concepts(config)
+    control_domain = list(config["concepts"].keys())[0]
     failures = []
     all_drifts = []
 
@@ -84,7 +85,7 @@ def test_v1_physical_stability(matrices, config):
             domain_drift = compute_subdomain_drift(
                 baseline_dist, framed_dist, concepts, config
             )
-            phys_drift = domain_drift.get("physical", np.nan)
+            phys_drift = domain_drift.get(control_domain, np.nan)
             all_drifts.append((model, framing, temp, phys_drift))
 
             if not np.isnan(phys_drift) and phys_drift > threshold:
@@ -311,15 +312,18 @@ def test_v5_framing_sensitivity(matrices, config):
             domain_drift = compute_subdomain_drift(
                 baseline_dist, framed_dist, concepts, config
             )
-            moral_drift = domain_drift.get("moral", 0)
-            phys_drift = domain_drift.get("physical", 0)
+            domain_keys = list(config["concepts"].keys())
+            control_domain = domain_keys[0]
+            target_domain = domain_keys[-1]
+            target_drift = domain_drift.get(target_domain, 0)
+            control_drift = domain_drift.get(control_domain, 0)
 
-            # Simple significance test: moral drift > 2x physical drift
+            # Simple significance test: target drift > 2x control drift
             # (A proper permutation test would go here with more data)
-            if moral_drift > 0 and (phys_drift == 0 or moral_drift / max(phys_drift, 0.001) > 2.0):
+            if target_drift > 0 and (control_drift == 0 or target_drift / max(control_drift, 0.001) > 2.0):
                 models_with_sig_drift.add(model)
-                details.append(f"{model}/{framing}: moral={moral_drift:.3f}, "
-                               f"physical={phys_drift:.3f}")
+                details.append(f"{model}/{framing}: {target_domain}={target_drift:.3f}, "
+                               f"{control_domain}={control_drift:.3f}")
 
     n_sig = len(models_with_sig_drift)
     passed = n_sig >= min_models
@@ -370,16 +374,16 @@ def test_v6_domain_ordering(matrices, config):
                 if not np.isnan(drift):
                     domain_drifts[domain].append(drift)
 
-        mean_phys = np.mean(domain_drifts.get("physical", [0]))
-        mean_inst = np.mean(domain_drifts.get("institutional", [0]))
-        mean_moral = np.mean(domain_drifts.get("moral", [0]))
-
-        ordering_holds = mean_phys < mean_inst < mean_moral
+        # Domain ordering: control < intermediate < target (config key order)
+        domain_keys = list(config["concepts"].keys())
+        mean_drifts = [np.mean(domain_drifts.get(d, [0])) for d in domain_keys]
+        ordering_holds = all(mean_drifts[i] < mean_drifts[i+1] for i in range(len(mean_drifts)-1))
         if ordering_holds:
             models_with_ordering.add(model)
 
-        details.append(f"{model}: P={mean_phys:.3f} < I={mean_inst:.3f} < M={mean_moral:.3f} "
-                       f"{'(holds)' if ordering_holds else '(VIOLATED)'}")
+        drift_str = " < ".join(f"{d[0].upper()}={v:.3f}" for d, v in zip(domain_keys, mean_drifts))
+        details.append(f"{model}: {drift_str} {'(holds)' if ordering_holds else '(VIOLATED)'}")
+
 
     n_ordered = len(models_with_ordering)
     passed = n_ordered >= min_models
@@ -465,7 +469,13 @@ def test_v8_control_framing(matrices, config):
     in the moral domain. Irrelevant preamble should produce less drift than nonsense.
     """
     concepts = get_all_concepts(config)
-    cultural_framings = ["individualist", "collectivist", "hierarchical", "egalitarian"]
+    # Cultural framings = all except neutral, irrelevant, nonsense
+    cultural_framings = [
+        f for f in config["framings"]
+        if f not in ("neutral", "irrelevant", "nonsense")
+    ]
+    domain_keys = list(config["concepts"].keys())
+    target_domain = domain_keys[-1]
 
     models = sorted(set(k[0] for k in matrices))
     models_passing = set()
@@ -482,51 +492,51 @@ def test_v8_control_framing(matrices, config):
 
         baseline_dist = similarity_to_distance(matrices[baseline_key]["matrix"])
 
-        # Mean cultural drift in moral domain
-        cultural_moral_drifts = []
+        # Mean cultural drift in target domain
+        cultural_target_drifts = []
         for framing in cultural_framings:
             key = (model, framing, 0.0)
             if key not in matrices:
                 continue
             framed_dist = similarity_to_distance(matrices[key]["matrix"])
             dd = compute_subdomain_drift(baseline_dist, framed_dist, concepts, config)
-            moral_drift = dd.get("moral", 0)
-            if not np.isnan(moral_drift):
-                cultural_moral_drifts.append(moral_drift)
+            target_drift = dd.get(target_domain, 0)
+            if not np.isnan(target_drift):
+                cultural_target_drifts.append(target_drift)
 
-        if not cultural_moral_drifts:
+        if not cultural_target_drifts:
             continue
-        mean_cultural_moral = np.mean(cultural_moral_drifts)
+        mean_cultural_target = np.mean(cultural_target_drifts)
 
         # Nonsense drift
-        nonsense_moral = 0
+        nonsense_target = 0
         nonsense_key = (model, "nonsense", 0.0)
         if nonsense_key in matrices:
             framed_dist = similarity_to_distance(matrices[nonsense_key]["matrix"])
             dd = compute_subdomain_drift(baseline_dist, framed_dist, concepts, config)
-            nonsense_moral = dd.get("moral", 0)
+            nonsense_target = dd.get(target_domain, 0)
 
         # Irrelevant drift
-        irrelevant_moral = 0
+        irrelevant_target = 0
         irrelevant_key = (model, "irrelevant", 0.0)
         if irrelevant_key in matrices:
             framed_dist = similarity_to_distance(matrices[irrelevant_key]["matrix"])
             dd = compute_subdomain_drift(baseline_dist, framed_dist, concepts, config)
-            irrelevant_moral = dd.get("moral", 0)
+            irrelevant_target = dd.get(target_domain, 0)
 
         # Check: nonsense < 50% of cultural mean
-        nonsense_ratio = nonsense_moral / mean_cultural_moral if mean_cultural_moral > 0 else 0
+        nonsense_ratio = nonsense_target / mean_cultural_target if mean_cultural_target > 0 else 0
         # Check: irrelevant < nonsense
-        irrelevant_lt_nonsense = irrelevant_moral <= nonsense_moral
+        irrelevant_lt_nonsense = irrelevant_target <= nonsense_target
 
         model_passes = nonsense_ratio < 0.5 and irrelevant_lt_nonsense
         if model_passes:
             models_passing.add(model)
 
         details.append(
-            f"{model}: cultural_mean={mean_cultural_moral:.3f}, "
-            f"nonsense={nonsense_moral:.3f} ({nonsense_ratio:.0%}), "
-            f"irrelevant={irrelevant_moral:.3f} "
+            f"{model}: cultural_mean={mean_cultural_target:.3f}, "
+            f"nonsense={nonsense_target:.3f} ({nonsense_ratio:.0%}), "
+            f"irrelevant={irrelevant_target:.3f} "
             f"{'(PASS)' if model_passes else '(FAIL)'}"
         )
 
