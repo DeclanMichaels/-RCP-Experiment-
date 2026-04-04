@@ -1,0 +1,113 @@
+{
+  "_meta": {
+    "domain": "Employment / Human Resources",
+    "version": "1.0",
+    "author": "Declan Michaels",
+    "date": "2026-03-24",
+    "theoretical_basis": [
+      "Fox, A. (1966). Industrial Sociology and Industrial Relations. Royal Commission on Trade Unions and Employers' Associations, Research Papers 3, HMSO, London.",
+      "Fox, A. (1974). Beyond Contract: Work, Power and Trust Relations. Faber & Faber, London.",
+      "Hofstede, G. (1980). Culture's Consequences: International Differences in Work-Related Values. Sage, Beverly Hills.",
+      "Hofstede, G., Hofstede, G. J., & Minkov, M. (2010). Cultures and Organizations: Software of the Mind (3rd ed.). McGraw-Hill.",
+      "Trompenaars, F. & Hampden-Turner, C. (1997). Riding the Waves of Culture: Understanding Cultural Diversity in Business (2nd ed.). Nicholas Brealey, London.",
+      "Rawls, J. (1971). A Theory of Justice. Harvard University Press.",
+      "Budd, J. W. & Bhave, D. (2008). Values, Ideologies, and Frames of Reference in Industrial Relations. In P. Blyton et al. (Eds.), The SAGE Handbook of Industrial Relations.",
+      "Kaufman, B. E., Barry, M., Wilkinson, A., Lomas, G., & Gomez, R. (2021). Using unitarist, pluralist, and radical frames to map the cross-section distribution of employment relations across workplaces. Journal of Industrial Relations, 63(2)."
+    ],
+    "framing_derivation": "Employment framings are derived from Fox's frames of reference in industrial relations (1966, 1974), the foundational paradigm for employment relationship theory, cross-validated against Hofstede's cultural dimensions (1980, 2010) and Trompenaars & Hampden-Turner's achievement-ascription dimension (1997). The four framings represent positions at which these three independently developed theoretical frameworks converge. 'Meritocratic' maps to Fox's unitarist (performance-aligned variant), Hofstede's high individualism / low power distance, and Trompenaars' achievement culture. 'Ascriptive' maps to Fox's unitarist (paternalist variant), Hofstede's high power distance / high uncertainty avoidance, and Trompenaars' ascription culture. 'Pluralist' maps to Fox's pluralist frame, Hofstede's low power distance, and Rawlsian distributive justice. 'Structural' maps to Fox's radical/critical frame (1974), extended in contemporary critical HRM scholarship.",
+    "control_framings": "Two control framings complement the four cultural framings. The 'irrelevant' framing (weather context) measures baseline prompt sensitivity — any drift here establishes the noise floor, since weather has no coherent relationship to employment concepts. Drift under the irrelevant framing indicates the model is generally prompt-sensitive rather than culturally sensitive. The 'nonsense' framing (astrological HR decisions) tests whether the model constructs coherent judgment geometry from incoherent instructions. High drift with high systematic/random ratio under nonsense indicates compliance behavior — the model built a structured response to a meaningless prompt rather than recognizing and ignoring it. Low drift indicates the model treated the nonsense as noise and preserved its neutral geometry. Together, these controls distinguish genuine cultural perspective-taking (high cultural drift, low irrelevant drift, low nonsense drift) from general prompt sensitivity (high drift across all framings) and from undiscriminating compliance (high drift including nonsense with coherent structure).",
+    "subdomain_rationale": "Procedural concepts (payroll, scheduling, attendance, enrollment, timekeeping, recordkeeping) serve as the control domain — their interrelationships describe administrative mechanics that should remain stable regardless of employment philosophy. Performance concepts (competence, productivity, potential, accountability, initiative, leadership) are value-laden — their geometry shifts depending on whether an organization values demonstrated output, accumulated experience, equitable opportunity, or collective solidarity. Equity concepts (fairness, diversity, representation, seniority, inclusion, advancement) are the target domain — maximally culturally loaded, as each framing produces a fundamentally different relational structure among these concepts."
+  },
+
+  "concepts": {
+    "procedural": ["payroll", "scheduling", "attendance", "enrollment", "timekeeping", "recordkeeping"],
+    "performance": ["competence", "productivity", "potential", "accountability", "initiative", "leadership"],
+    "equity": ["fairness", "diversity", "representation", "seniority", "inclusion", "advancement"]
+  },
+
+  "framings": {
+    "neutral": "",
+    "meritocratic": "Consider these concepts from the perspective of an organization that evaluates employees primarily on demonstrated results and measurable output. In this organization, compensation and advancement are tied directly to individual performance regardless of tenure, background, or group membership. Managers believe that objective metrics are the best basis for employment decisions and that the best-performing individuals should receive the greatest rewards. Answer all similarity questions from the perspective of someone working in this organization.",
+    "ascriptive": "Consider these concepts from the perspective of an organization where status is conferred by organizational role and position within established structures. In this organization, employees advance along predictable trajectories, and those who hold senior positions do so because the institution has recognized their cumulative value. Managers believe that continuity and respect for settled hierarchies sustain organizational cohesion, and that disrupting established arrangements introduces more risk than benefit. Answer all similarity questions from the perspective of someone working in this organization.",
+    "pluralist": "Consider these concepts from the perspective of an organization that recognizes employees and management as having distinct but legitimate interests that must be balanced through negotiation and transparent process. In this organization, employment decisions are subject to agreed-upon procedures designed to prevent any single group from dominating outcomes. Managers believe that equitable processes and representative participation produce better and more sustainable decisions than unilateral authority. Answer all similarity questions from the perspective of someone working in this organization.",
+    "structural": "Consider these concepts from the perspective of an organization operating within a system where bargaining power between employers and workers is fundamentally unequal. In this organization, policies that appear neutral are understood to reflect the interests of those with greater institutional leverage. Managers and employees recognize that individual outcomes are shaped more by systemic position than by personal effort, and that collective action is necessary to counterbalance structural advantages. Answer all similarity questions from the perspective of someone working in this organization.",
+    "irrelevant": "Consider these concepts in the context of a region experiencing unusually warm weather this season. Temperatures have been above the historical average for three consecutive months. Answer all similarity questions with this context in mind.",
+    "nonsense": "Consider these concepts from the perspective of an organization where employee value is determined by the alphabetical position of their first name, and all promotion decisions must align with astrological compatibility between the candidate and their prospective supervisor. Managers in this organization believe that celestial alignments at the time of hire predict long-term job performance. Answer all similarity questions from the perspective of someone working in this organization."
+  },
+
+  "models": {
+    "claude-sonnet": {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4-20250514",
+      "api_base": "https://api.anthropic.com/v1/messages",
+      "env_key": "ANTHROPIC_API_KEY"
+    },
+    "gpt-4o": {
+      "provider": "openai",
+      "model_id": "gpt-4o",
+      "api_base": "https://api.openai.com/v1/chat/completions",
+      "env_key": "OPENAI_API_KEY"
+    },
+    "gemini-pro": {
+      "provider": "google",
+      "model_id": "gemini-2.5-pro",
+      "api_base": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent",
+      "env_key": "GEMINI_API_KEY"
+    },
+    "llama-70b": {
+      "provider": "together",
+      "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "api_base": "https://api.together.xyz/v1/chat/completions",
+      "env_key": "TOGETHER_API_KEY"
+    },
+    "grok": {
+      "provider": "xai",
+      "model_id": "grok-4-1-fast-non-reasoning",
+      "api_base": "https://api.x.ai/v1/chat/completions",
+      "env_key": "XAI_API_KEY"
+    }
+  },
+
+  "probe_types": {
+    "rating": {"max_tokens": 100},
+    "explanation": {"max_tokens": 200},
+    "manipulation_check": {"max_tokens": 300}
+  },
+
+  "collection": {
+    "reps_deterministic": 1,
+    "reps_stochastic": 5,
+    "temp_deterministic": 0.0,
+    "temp_stochastic": 0.7,
+    "delay_between_calls_sec": 13.0,
+    "max_retries": 3,
+    "retry_backoff_base_sec": 2.0
+  },
+
+  "validation": {
+    "symmetry_sample_size": 20,
+    "parse_rate_threshold": 0.95,
+    "physical_drift_threshold": 0.05,
+    "min_models_with_moral_drift": 3,
+    "min_models_with_domain_ordering": 3,
+    "deterministic_zero_variance_threshold": 0.90
+  },
+
+  "known_pair_orderings": [
+    {
+      "description": "Procedural pair closer than cross-domain pair",
+      "closer_pair": ["payroll", "timekeeping"],
+      "farther_pair": ["payroll", "fairness"]
+    },
+    {
+      "description": "Equity pair closer than cross-domain pair",
+      "closer_pair": ["fairness", "inclusion"],
+      "farther_pair": ["fairness", "scheduling"]
+    },
+    {
+      "description": "Performance pair closer than cross-domain pair",
+      "closer_pair": ["competence", "productivity"],
+      "farther_pair": ["competence", "attendance"]
+    }
+  ]
+}

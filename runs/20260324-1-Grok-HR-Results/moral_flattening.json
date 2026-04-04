@@ -1,0 +1,44 @@
+{
+  "grok/meritocratic": {
+    "neutral_variance": 2.728888888888889,
+    "framed_variance": 2.488888888888888,
+    "variance_ratio": 0.9120521172638433,
+    "framed_mean": 1.6666666666666667,
+    "is_flattened": false
+  },
+  "grok/ascriptive": {
+    "neutral_variance": 2.728888888888889,
+    "framed_variance": 4.515555555555554,
+    "variance_ratio": 1.65472312703583,
+    "framed_mean": 2.466666666666667,
+    "is_flattened": false
+  },
+  "grok/pluralist": {
+    "neutral_variance": 2.728888888888889,
+    "framed_variance": 4.5600000000000005,
+    "variance_ratio": 1.6710097719869708,
+    "framed_mean": 3.8,
+    "is_flattened": false
+  },
+  "grok/structural": {
+    "neutral_variance": 2.728888888888889,
+    "framed_variance": 6.115555555555557,
+    "variance_ratio": 2.241042345276873,
+    "framed_mean": 3.1333333333333333,
+    "is_flattened": false
+  },
+  "grok/irrelevant": {
+    "neutral_variance": 2.728888888888889,
+    "framed_variance": 2.328888888888889,
+    "variance_ratio": 0.8534201954397393,
+    "framed_mean": 2.2666666666666666,
+    "is_flattened": false
+  },
+  "grok/nonsense": {
+    "neutral_variance": 2.728888888888889,
+    "framed_variance": 2.3733333333333335,
+    "variance_ratio": 0.8697068403908794,
+    "framed_mean": 1.6,
+    "is_flattened": false
+  }
+}

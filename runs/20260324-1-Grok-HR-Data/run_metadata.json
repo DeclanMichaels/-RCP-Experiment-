@@ -1,0 +1,19 @@
+{
+  "pair_direction_seed": 170536968,
+  "models": [
+    "grok"
+  ],
+  "framings": [
+    "neutral",
+    "meritocratic",
+    "ascriptive",
+    "pluralist",
+    "structural",
+    "irrelevant",
+    "nonsense"
+  ],
+  "temperatures": [
+    0.0
+  ],
+  "timestamp": "2026-03-24T13:49:24.525467+00:00"
+}

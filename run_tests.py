@@ -16,7 +16,8 @@ def main():
 
     test_files = [
         ("collect.py functions", "test_collect.py"),
-        ("analyze.py functions", "test_analyze.py"),
+        ("analyze.py functions", "analysis/test_analyze.py"),
+        ("permutation_tests.py functions", "analysis/test_permutation.py"),
     ]
 
     total_passed = 0

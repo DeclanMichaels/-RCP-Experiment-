@@ -1,0 +1,19 @@
+{
+  "pair_direction_seed": 2086467097,
+  "models": [
+    "gemini-pro"
+  ],
+  "framings": [
+    "neutral",
+    "individualist",
+    "collectivist",
+    "hierarchical",
+    "egalitarian",
+    "irrelevant",
+    "nonsense"
+  ],
+  "temperatures": [
+    0.0
+  ],
+  "timestamp": "2026-03-24T12:26:23.149571+00:00"
+}

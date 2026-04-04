@@ -1,0 +1,24 @@
+{
+  "llama-70b": {
+    "individualist": {
+      "spearman_rho": 0.8656211219480859,
+      "mean_abs_distance": 0.6405228758169934
+    },
+    "collectivist": {
+      "spearman_rho": 0.8040926815194287,
+      "mean_abs_distance": 0.7058823529411765
+    },
+    "hierarchical": {
+      "spearman_rho": 0.7980603827945126,
+      "mean_abs_distance": 0.7777777777777778
+    },
+    "egalitarian": {
+      "spearman_rho": 0.75336507099087,
+      "mean_abs_distance": 0.7908496732026143
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.877930590871533,
+      "mean_abs_distance": 0.4934640522875817
+    }
+  }
+}

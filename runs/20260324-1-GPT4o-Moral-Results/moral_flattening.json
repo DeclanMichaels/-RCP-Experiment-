@@ -1,0 +1,44 @@
+{
+  "gpt-4o/individualist": {
+    "neutral_variance": 1.0222222222222224,
+    "framed_variance": 0.8622222222222224,
+    "variance_ratio": 0.8434782608695653,
+    "framed_mean": 2.2666666666666666,
+    "is_flattened": false
+  },
+  "gpt-4o/collectivist": {
+    "neutral_variance": 1.0222222222222224,
+    "framed_variance": 1.8399999999999999,
+    "variance_ratio": 1.7999999999999996,
+    "framed_mean": 4.6,
+    "is_flattened": false
+  },
+  "gpt-4o/hierarchical": {
+    "neutral_variance": 1.0222222222222224,
+    "framed_variance": 2.2666666666666666,
+    "variance_ratio": 2.2173913043478257,
+    "framed_mean": 3.0,
+    "is_flattened": false
+  },
+  "gpt-4o/egalitarian": {
+    "neutral_variance": 1.0222222222222224,
+    "framed_variance": 1.1555555555555554,
+    "variance_ratio": 1.1304347826086953,
+    "framed_mean": 2.6666666666666665,
+    "is_flattened": false
+  },
+  "gpt-4o/irrelevant": {
+    "neutral_variance": 1.0222222222222224,
+    "framed_variance": 1.0933333333333333,
+    "variance_ratio": 1.0695652173913042,
+    "framed_mean": 2.2,
+    "is_flattened": false
+  },
+  "gpt-4o/nonsense": {
+    "neutral_variance": 1.0222222222222224,
+    "framed_variance": 1.448888888888889,
+    "variance_ratio": 1.417391304347826,
+    "framed_mean": 3.1333333333333333,
+    "is_flattened": false
+  }
+}

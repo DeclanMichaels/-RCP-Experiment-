@@ -1,0 +1,100 @@
+{
+  "claude-sonnet/neutral/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/individualist/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.8,
+    "full_unique_values": 6,
+    "moral_unique_values": 3,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/collectivist/t=0.0": {
+    "full_tie_density": 0.9539473684210527,
+    "moral_tie_density": 0.8,
+    "full_unique_values": 7,
+    "moral_unique_values": 3,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/hierarchical/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 7,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/egalitarian/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/irrelevant/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/nonsense/t=0.0": {
+    "full_tie_density": 0.25,
+    "moral_tie_density": NaN,
+    "full_unique_values": 3,
+    "moral_unique_values": 0,
+    "moral_pair_count": 0
+  },
+  "claude-sonnet/neutral/t=0.7": {
+    "full_tie_density": 0.8758169934640523,
+    "moral_tie_density": 0.5333333333333333,
+    "full_unique_values": 19,
+    "moral_unique_values": 7,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/individualist/t=0.7": {
+    "full_tie_density": 0.8562091503267975,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 22,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/collectivist/t=0.7": {
+    "full_tie_density": 0.8431372549019608,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 24,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/hierarchical/t=0.7": {
+    "full_tie_density": 0.8366013071895425,
+    "moral_tie_density": 0.6,
+    "full_unique_values": 25,
+    "moral_unique_values": 6,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/egalitarian/t=0.7": {
+    "full_tie_density": 0.8431372549019608,
+    "moral_tie_density": 0.6,
+    "full_unique_values": 24,
+    "moral_unique_values": 6,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/irrelevant/t=0.7": {
+    "full_tie_density": 0.859375,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 18,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "claude-sonnet/nonsense/t=0.7": {
+    "full_tie_density": 0.5714285714285714,
+    "moral_tie_density": NaN,
+    "full_unique_values": 3,
+    "moral_unique_values": 0,
+    "moral_pair_count": 0
+  }
+}

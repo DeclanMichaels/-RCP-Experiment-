@@ -363,12 +363,19 @@ def collect_single(model_name, model_cfg, prompt, temperature, config, max_token
             return raw, latency, None
         except requests.exceptions.HTTPError as e:
             status = e.response.status_code if e.response is not None else 0
-            if status in (429, 500, 502, 503) and attempt < max_retries:
+            # Capture response body for diagnostics
+            err_body = ''
+            if e.response is not None:
+                try:
+                    err_body = e.response.text[:300]
+                except Exception:
+                    pass
+            if status in (429, 500, 502, 503, 529) and attempt < max_retries:
                 wait = backoff_base * (2 ** attempt)
                 print(f"  Retry {attempt+1}/{max_retries} after {status}, waiting {wait:.1f}s")
                 time.sleep(wait)
                 continue
-            return None, 0, f"HTTP {status}: {str(e)[:200]}"
+            return None, 0, f"HTTP {status}: {str(e)[:100]} | {err_body}"
         except Exception as e:
             if attempt < max_retries:
                 wait = backoff_base * (2 ** attempt)

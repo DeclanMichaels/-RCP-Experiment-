@@ -54,7 +54,7 @@
     },
     "llama-70b": {
       "provider": "together",
-      "model_id": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
       "api_base": "https://api.together.xyz/v1/chat/completions",
       "env_key": "TOGETHER_API_KEY"
     }
@@ -62,8 +62,8 @@
 
   "probe_types": {
     "rating": {"max_tokens": 100},
-    "explanation": {"max_tokens": 200},
-    "manipulation_check": {"max_tokens": 300}
+    "explanation": {"max_tokens": 2000},
+    "manipulation_check": {"max_tokens": 500}
   },
 
   "collection": {

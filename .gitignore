@@ -1,4 +1,26 @@
+# Python
 __pycache__/
 *.pyc
+.venv/
+.pytest_cache/
+
+# Environment
 .env
 .DS_Store
+
+# Private working documents
+RH.md
+papers/
+
+# Session artifacts
+movetestresults
+post-fix-test-results
+stats_output.txt
+stats_exact.txt
+detect_target_flattening
+get_target_domain_pairs
+git_status
+
+# Archives
+runs.zip
+archive/

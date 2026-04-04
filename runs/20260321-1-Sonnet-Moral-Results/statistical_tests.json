@@ -1,0 +1,88 @@
+{
+  "claude-sonnet": {
+    "model": "claude-sonnet",
+    "temperature_baseline": 0.0,
+    "temperature_framings": {
+      "individualist": 0.0,
+      "collectivist": 0.0,
+      "hierarchical": 0.0,
+      "egalitarian": 0.0
+    },
+    "h1_domain_ordering": {
+      "preregistered_ordering": "physical < institutional < moral",
+      "preregistered_p_value": 0.1596719597120923,
+      "preregistered_count": 2738874,
+      "observed_ordering": "physical < moral < institutional",
+      "observed_p_value": 0.1596719597120923,
+      "observed_count": 2738874,
+      "observed_strictly_ordered": true,
+      "observed_drifts": {
+        "physical": 0.5833333333333334,
+        "institutional": 1.4833333333333334,
+        "moral": 1.4333333333333333
+      },
+      "total_permutations": 17153136,
+      "exact": true
+    },
+    "h2_framing_sensitivity": {
+      "per_framing": [
+        {
+          "p_value": 0.04793967142472394,
+          "observed_target_drift": 1.0,
+          "null_mean": 0.6405228758169935,
+          "null_std": 0.185452837463653,
+          "total_permutations": 18564,
+          "exact": true,
+          "framing": "individualist",
+          "p_corrected": 0.19175868569889576,
+          "significant": false
+        },
+        {
+          "p_value": 0.21211957985456503,
+          "observed_target_drift": 1.8,
+          "null_mean": 1.4444444444444444,
+          "null_std": 0.3821545767774141,
+          "total_permutations": 18564,
+          "exact": true,
+          "framing": "collectivist",
+          "p_corrected": 0.6363587395636952,
+          "significant": false
+        },
+        {
+          "p_value": 0.25020199299757606,
+          "observed_target_drift": 1.7333333333333334,
+          "null_mean": 1.4052287581699345,
+          "null_std": 0.4451810504876333,
+          "total_permutations": 18564,
+          "exact": true,
+          "framing": "hierarchical",
+          "p_corrected": 0.6363587395636952,
+          "significant": false
+        },
+        {
+          "p_value": 0.368758416374899,
+          "observed_target_drift": 1.2,
+          "null_mean": 1.0457516339869282,
+          "null_std": 0.3374233252248973,
+          "total_permutations": 18564,
+          "exact": true,
+          "framing": "egalitarian",
+          "p_corrected": 0.6363587395636952,
+          "significant": false
+        }
+      ],
+      "any_significant_after_correction": false
+    },
+    "h3_control_discrimination": {
+      "nonsense_target_drift": 0.0,
+      "cultural_mean_target_drift": 1.1944444444444444,
+      "ratio": 0.0,
+      "passes_threshold": true
+    },
+    "effect_sizes": {
+      "d_physical_vs_moral": 2.8780965047138114,
+      "d_physical_vs_institutional": 3.1316409257595894,
+      "note": "Cohen's d computed from n=4 per group (one per cultural framing). Low-n estimates; interpret magnitude cautiously."
+    }
+  }
+}

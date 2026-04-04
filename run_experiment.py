@@ -167,7 +167,7 @@ def run_analysis(data_dir, results_dir, config="config.json"):
     """Step 6: Analysis pipeline."""
     return run_step(
         "STEP 6: Analysis Pipeline",
-        [PYTHON, "analyze.py", "--config", config, "--data-dir", data_dir, "--output-dir", results_dir],
+        [PYTHON, "analysis/analyze.py", "--config", config, "--data-dir", data_dir, "--output-dir", results_dir],
     )
 
 
@@ -175,7 +175,7 @@ def run_validation(data_dir, config="config.json"):
     """Step 7: Validation tests V1-V9."""
     return run_step(
         "STEP 7: Validation Tests (V1-V9)",
-        [PYTHON, "validate.py", "--config", config, "--data-dir", data_dir],
+        [PYTHON, "analysis/validate.py", "--config", config, "--data-dir", data_dir],
         stop_on_fail=False,  # Report but don't abort -- some failures are expected
     )
 

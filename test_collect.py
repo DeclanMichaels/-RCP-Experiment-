@@ -11,7 +11,7 @@ from collect import (
     get_concept_domain,
     get_all_pairs,
     randomize_pair_directions,
-    get_moral_pairs,
+    get_target_domain_pairs,
     build_rating_prompt,
     build_explanation_prompt,
     build_manipulation_check_prompt,
@@ -86,12 +86,12 @@ class TestGetAllPairs:
             assert a < b
 
 
-class TestGetMoralPairs:
+class TestGetTargetDomainPairs:
     def test_count(self, config):
-        assert len(get_moral_pairs(config)) == 15  # C(6,2)
+        assert len(get_target_domain_pairs(config)) == 15  # C(6,2)
 
     def test_all_moral(self, config):
-        for a, b in get_moral_pairs(config):
+        for a, b in get_target_domain_pairs(config):
             assert get_concept_domain(a, config) == "moral"
             assert get_concept_domain(b, config) == "moral"
 

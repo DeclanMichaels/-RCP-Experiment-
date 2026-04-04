@@ -1,0 +1,24 @@
+{
+  "grok": {
+    "meritocratic": {
+      "spearman_rho": 0.5128879557508497,
+      "mean_abs_distance": 0.934640522875817
+    },
+    "ascriptive": {
+      "spearman_rho": 0.5822082933580605,
+      "mean_abs_distance": 1.0849673202614378
+    },
+    "pluralist": {
+      "spearman_rho": 0.7455925321780907,
+      "mean_abs_distance": 0.6993464052287581
+    },
+    "structural": {
+      "spearman_rho": 0.4277584953656154,
+      "mean_abs_distance": 1.1437908496732025
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.748932071054261,
+      "mean_abs_distance": 0.7303921568627451
+    }
+  }
+}

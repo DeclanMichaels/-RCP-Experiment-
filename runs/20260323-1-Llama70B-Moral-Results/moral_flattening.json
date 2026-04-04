@@ -1,0 +1,44 @@
+{
+  "llama-70b/individualist": {
+    "neutral_variance": 2.222222222222222,
+    "framed_variance": 1.2888888888888885,
+    "variance_ratio": 0.58,
+    "framed_mean": 3.3333333333333335,
+    "is_flattened": false
+  },
+  "llama-70b/collectivist": {
+    "neutral_variance": 2.222222222222222,
+    "framed_variance": 2.24,
+    "variance_ratio": 1.0080000000000002,
+    "framed_mean": 4.6,
+    "is_flattened": false
+  },
+  "llama-70b/hierarchical": {
+    "neutral_variance": 2.222222222222222,
+    "framed_variance": 3.2266666666666675,
+    "variance_ratio": 1.4520000000000006,
+    "framed_mean": 4.2,
+    "is_flattened": false
+  },
+  "llama-70b/egalitarian": {
+    "neutral_variance": 2.222222222222222,
+    "framed_variance": 2.462222222222222,
+    "variance_ratio": 1.108,
+    "framed_mean": 3.933333333333333,
+    "is_flattened": false
+  },
+  "llama-70b/irrelevant": {
+    "neutral_variance": 2.222222222222222,
+    "framed_variance": 2.248888888888889,
+    "variance_ratio": 1.0120000000000002,
+    "framed_mean": 3.1333333333333333,
+    "is_flattened": false
+  },
+  "llama-70b/nonsense": {
+    "neutral_variance": 2.222222222222222,
+    "framed_variance": 1.9555555555555553,
+    "variance_ratio": 0.88,
+    "framed_mean": 4.333333333333333,
+    "is_flattened": false
+  }
+}

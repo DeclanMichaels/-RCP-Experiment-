@@ -1,0 +1,51 @@
+{
+  "llama-70b/neutral/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "llama-70b/individualist/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.8,
+    "full_unique_values": 6,
+    "moral_unique_values": 3,
+    "moral_pair_count": 15
+  },
+  "llama-70b/collectivist/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 5,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "llama-70b/hierarchical/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 5,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "llama-70b/egalitarian/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6,
+    "full_unique_values": 6,
+    "moral_unique_values": 6,
+    "moral_pair_count": 15
+  },
+  "llama-70b/irrelevant/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6,
+    "full_unique_values": 6,
+    "moral_unique_values": 6,
+    "moral_pair_count": 15
+  },
+  "llama-70b/nonsense/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  }
+}

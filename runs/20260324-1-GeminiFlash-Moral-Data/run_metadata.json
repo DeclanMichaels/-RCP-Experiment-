@@ -1,0 +1,19 @@
+{
+  "pair_direction_seed": 258528301,
+  "models": [
+    "gemini-flash"
+  ],
+  "framings": [
+    "neutral",
+    "individualist",
+    "collectivist",
+    "hierarchical",
+    "egalitarian",
+    "irrelevant",
+    "nonsense"
+  ],
+  "temperatures": [
+    0.7
+  ],
+  "timestamp": "2026-03-24T20:30:16.453997+00:00"
+}

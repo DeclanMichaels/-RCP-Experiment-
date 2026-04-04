@@ -1,0 +1,24 @@
+{
+  "claude-sonnet": {
+    "individualist": {
+      "spearman_rho": 0.6842193742789567,
+      "mean_abs_distance": 0.673202614379085
+    },
+    "collectivist": {
+      "spearman_rho": 0.5760560230127375,
+      "mean_abs_distance": 1.493421052631579
+    },
+    "hierarchical": {
+      "spearman_rho": 0.5308713205063994,
+      "mean_abs_distance": 1.4640522875816993
+    },
+    "egalitarian": {
+      "spearman_rho": 0.5059176392050737,
+      "mean_abs_distance": 1.0980392156862746
+    },
+    "neutral_to_centroid": {
+      "spearman_rho": 0.690721525269081,
+      "mean_abs_distance": 0.9438997821350762
+    }
+  }
+}

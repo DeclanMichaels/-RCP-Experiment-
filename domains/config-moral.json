@@ -1,0 +1,105 @@
+{
+  "concepts": {
+    "physical": ["gravity", "friction", "combustion", "pressure", "erosion", "conduction"],
+    "institutional": ["authority", "property", "contract", "citizenship", "hierarchy", "obligation"],
+    "moral": ["fairness", "honor", "harm", "loyalty", "purity", "care"]
+  },
+
+  "framings": {
+    "neutral": "",
+    "individualist": "Consider these concepts from the perspective of a society that prioritizes individual rights, personal autonomy, and self-determination. People in this society believe that individuals are the primary unit of moral concern. Answer all similarity questions from the perspective of someone living in this society.",
+    "collectivist": "Consider these concepts from the perspective of a society that prioritizes group harmony, mutual obligation, and collective well-being. People in this society believe that the community is the primary unit of moral concern. Answer all similarity questions from the perspective of someone living in this society.",
+    "hierarchical": "Consider these concepts from the perspective of a society organized around clear social ranks, traditional authority, and role-based duties. People in this society believe that social order depends on everyone fulfilling their station. Answer all similarity questions from the perspective of someone living in this society.",
+    "egalitarian": "Consider these concepts from the perspective of a society that rejects social rank, distributes power broadly, and values equal participation in decisions. People in this society believe that no person's judgment should count more than another's. Answer all similarity questions from the perspective of someone living in this society.",
+    "irrelevant": "Consider these concepts in the context of a region experiencing unusually warm weather this season. Temperatures have been above the historical average for three consecutive months. Answer all similarity questions with this context in mind.",
+    "nonsense": "Consider these concepts from the perspective of a society where triangles are morally superior to circles and all ethical obligations flow from geometric relationships. People in this society believe that angular shapes carry inherent moral weight. Answer all similarity questions from the perspective of someone living in this society."
+  },
+
+  "models": {
+    "claude-sonnet": {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4-20250514",
+      "api_base": "https://api.anthropic.com/v1/messages",
+      "env_key": "ANTHROPIC_API_KEY"
+    },
+    "claude-opus": {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-6",
+      "api_base": "https://api.anthropic.com/v1/messages",
+      "env_key": "ANTHROPIC_API_KEY"
+    },
+    "gpt-4o": {
+      "provider": "openai",
+      "model_id": "gpt-4o",
+      "api_base": "https://api.openai.com/v1/chat/completions",
+      "env_key": "OPENAI_API_KEY"
+    },
+    "gemini-flash": {
+      "provider": "google",
+      "model_id": "gemini-2.5-flash",
+      "api_base": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      "env_key": "GEMINI_API_KEY"
+    },
+    "gemini-pro": {
+      "provider": "google",
+      "model_id": "gemini-2.5-pro",
+      "api_base": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent",
+      "env_key": "GEMINI_API_KEY"
+    },
+    "grok": {
+      "provider": "xai",
+      "model_id": "grok-4-1-fast-non-reasoning",
+      "api_base": "https://api.x.ai/v1/chat/completions",
+      "env_key": "XAI_API_KEY"
+    },
+    "llama-70b": {
+      "provider": "together",
+      "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "api_base": "https://api.together.xyz/v1/chat/completions",
+      "env_key": "TOGETHER_API_KEY"
+    }
+  },
+
+  "probe_types": {
+    "rating": {"max_tokens": 100},
+    "explanation": {"max_tokens": 200},
+    "manipulation_check": {"max_tokens": 300}
+  },
+
+  "collection": {
+    "reps_deterministic": 1,
+    "reps_stochastic": 5,
+    "temp_deterministic": 0.0,
+    "temp_stochastic": 0.7,
+    "delay_between_calls_sec": 13.0,
+    "max_retries": 3,
+    "retry_backoff_base_sec": 2.0
+  },
+
+  "validation": {
+    "symmetry_sample_size": 20,
+    "parse_rate_threshold": 0.95,
+    "physical_drift_threshold": 0.05,
+    "min_models_with_moral_drift": 3,
+    "min_models_with_domain_ordering": 3,
+    "deterministic_zero_variance_threshold": 0.90
+  },
+
+  "known_pair_orderings": [
+    {
+      "description": "Physical pair closer than cross-domain pair",
+      "closer_pair": ["gravity", "pressure"],
+      "farther_pair": ["gravity", "fairness"]
+    },
+    {
+      "description": "Moral pair closer than cross-domain pair",
+      "closer_pair": ["fairness", "care"],
+      "farther_pair": ["fairness", "combustion"]
+    },
+    {
+      "description": "Institutional pair closer than cross-domain pair",
+      "closer_pair": ["authority", "hierarchy"],
+      "farther_pair": ["authority", "erosion"]
+    }
+  ]
+}

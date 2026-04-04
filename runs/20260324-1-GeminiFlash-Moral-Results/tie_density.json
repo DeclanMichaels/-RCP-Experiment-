@@ -1,0 +1,100 @@
+{
+  "gemini-flash/neutral/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/individualist/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 6,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/collectivist/t=0.0": {
+    "full_tie_density": 0.9539473684210527,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 7,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/hierarchical/t=0.0": {
+    "full_tie_density": 0.954248366013072,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 7,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/egalitarian/t=0.0": {
+    "full_tie_density": 0.9530201342281879,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 7,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/irrelevant/t=0.0": {
+    "full_tie_density": 0.9607843137254902,
+    "moral_tie_density": 0.6666666666666667,
+    "full_unique_values": 6,
+    "moral_unique_values": 5,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/nonsense/t=0.0": {
+    "full_tie_density": 0.9673202614379085,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 5,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/neutral/t=0.7": {
+    "full_tie_density": 0.8366013071895425,
+    "moral_tie_density": 0.33333333333333337,
+    "full_unique_values": 25,
+    "moral_unique_values": 10,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/individualist/t=0.7": {
+    "full_tie_density": 0.8496732026143791,
+    "moral_tie_density": 0.4666666666666667,
+    "full_unique_values": 23,
+    "moral_unique_values": 8,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/collectivist/t=0.7": {
+    "full_tie_density": 0.8235294117647058,
+    "moral_tie_density": 0.7333333333333334,
+    "full_unique_values": 27,
+    "moral_unique_values": 4,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/hierarchical/t=0.7": {
+    "full_tie_density": 0.8431372549019608,
+    "moral_tie_density": 0.4666666666666667,
+    "full_unique_values": 24,
+    "moral_unique_values": 8,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/egalitarian/t=0.7": {
+    "full_tie_density": 0.8235294117647058,
+    "moral_tie_density": 0.33333333333333337,
+    "full_unique_values": 27,
+    "moral_unique_values": 10,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/irrelevant/t=0.7": {
+    "full_tie_density": 0.8300653594771241,
+    "moral_tie_density": 0.33333333333333337,
+    "full_unique_values": 26,
+    "moral_unique_values": 10,
+    "moral_pair_count": 15
+  },
+  "gemini-flash/nonsense/t=0.7": {
+    "full_tie_density": 0.8169934640522876,
+    "moral_tie_density": 0.4666666666666667,
+    "full_unique_values": 28,
+    "moral_unique_values": 8,
+    "moral_pair_count": 15
+  }
+}
