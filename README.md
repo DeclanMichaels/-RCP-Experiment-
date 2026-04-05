@@ -168,4 +168,4 @@ The published experiment identified two design errors through the pre-registrati
 
 ## License
 
-[To be determined -- recommend MIT for maximum adoption of the protocol]
+Apache License 2.0. See [LICENSE](LICENSE) for details.

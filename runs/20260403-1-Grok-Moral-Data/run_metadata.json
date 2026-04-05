@@ -1,0 +1,19 @@
+{
+  "pair_direction_seed": 1307314860,
+  "models": [
+    "grok"
+  ],
+  "framings": [
+    "neutral",
+    "individualist",
+    "collectivist",
+    "hierarchical",
+    "egalitarian",
+    "irrelevant",
+    "nonsense"
+  ],
+  "temperatures": [
+    0.7
+  ],
+  "timestamp": "2026-04-04T08:51:49.894762+00:00"
+}

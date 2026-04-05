@@ -10,7 +10,12 @@ __pycache__/
 
 # Private working documents
 RH.md
-papers/
+papers/rcp-paper-draft-v1.md
+papers/rcp-paper-draft-v2.md
+papers/rcp-paper-outlines.md
+
+# OSF reference copies
+OSF-Originals/
 
 # Session artifacts
 movetestresults
