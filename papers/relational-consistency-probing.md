@@ -24,13 +24,13 @@ I applied RCP to five deployed models across three concept domains (physical, in
 
 ## 2. Related Work
 
-**Moral psychology and cross-cultural variation.** Haidt's Moral Foundations Theory (Haidt 2012) identifies five or six foundations (care, fairness, loyalty, authority, purity, liberty) and documents cross-cultural variation in their relative weighting. Shweder's ethic-of-autonomy/community/divinity framework (Shweder et al. 1997), Hwang's Confucian relational ethics (Hwang 2001), and Gyekye's communitarian personhood (Gyekye 1997) describe moral frameworks that do not reduce to MFT foundations. The RCP moral concept inventory draws on MFT (a known limitation discussed in Section 7) but the protocol is agnostic to moral theory.
+**Moral psychology and cross-cultural variation.** Haidt's Moral Foundations Theory (Haidt 2012) identifies five or six foundations (care, fairness, loyalty, authority, purity, liberty) and documents cross-cultural variation in their relative weighting. Shweder's ethic-of-autonomy/community/divinity framework (Shweder, Much, and Mahapatra et al. 1997), Hwang's Confucian relational ethics (Hwang 2001), and Gyekye's communitarian personhood (Gyekye 1997) describe moral frameworks that do not reduce to MFT foundations. The RCP moral concept inventory draws on MFT (a known limitation discussed in Section 7) but the protocol is agnostic to moral theory.
 
-**LLM cultural alignment evaluation.** Arora et al. (2023) benchmark LLM responses against GlobalOpinionQA, measuring agreement with human survey responses from multiple countries. Cao et al. (2023) probe cultural values in LLMs using vignette-based surveys. Durmus et al. (2023) measure model opinions against cross-national survey data. These approaches measure the position a model takes. RCP complements them by measuring whether the structure of the model's judgments holds when context shifts.
+**LLM cultural alignment evaluation.** Arora, Karkkainen, and Romero (2023) benchmark LLM responses against GlobalOpinionQA, measuring agreement with human survey responses from multiple countries. Cao, Diao, and Bui (2023) probe cultural values in LLMs using vignette-based surveys. Durmus, Nguyen, and Liao et al. (2023) measure model opinions against cross-national survey data. These approaches measure the position a model takes. RCP complements them by measuring whether the structure of the model's judgments holds when context shifts.
 
-**Behavioral probing and consistency testing.** Recent work probes LLM behavior through structured prompts, including consistency tests under paraphrase (Elazar et al. 2021) and adversarial robustness evaluations under prompt perturbation (Zhu et al. 2023). Two papers are particularly relevant to RCP's motivation. Khan et al. (2025) found that LLM cultural alignment is unreliable across presentation formats, incoherent across cultural dimensions, and erratic under prompt steering, concluding that current survey-based evaluation methods require pre-registration and red-teaming. Rozen et al. (2025) showed that standard prompting fails to produce human-consistent value correlations, with value expressions that are context-dependent rather than stable. RCP responds to the problems these papers identify: rather than measuring cultural position (which Khan et al. show is unstable) or individual value expressions (which Rozen et al. show are context-dependent), it measures whether the relational structure among concepts reorganizes under controlled perturbation, with built-in controls that distinguish genuine cultural reasoning from prompt compliance.
+**Behavioral probing and consistency testing.** Recent work probes LLM behavior through structured prompts, including consistency tests under paraphrase (Elazar, Kassner, and Ravfogel et al. 2021) and adversarial robustness evaluations under prompt perturbation (Zhu, Wang, and Zhou et al. 2023). Two papers are particularly relevant to RCP's motivation. Khan, Casper, and Hadfield-Menell (2025) found that LLM cultural alignment is unreliable across presentation formats, incoherent across cultural dimensions, and erratic under prompt steering, concluding that current survey-based evaluation methods require pre-registration and red-teaming. Rozen, Bezalel, and Elidan et al. (2025) showed that standard prompting fails to produce human-consistent value correlations, with value expressions that are context-dependent rather than stable. RCP responds to the problems these papers identify: rather than measuring cultural position (which Khan et al. show is unstable) or individual value expressions (which Rozen et al. show are context-dependent), it measures whether the relational structure among concepts reorganizes under controlled perturbation, with built-in controls that distinguish genuine cultural reasoning from prompt compliance.
 
-**Representational similarity analysis.** Kriegeskorte et al. (2008) introduced representational similarity analysis (RSA) for comparing neural representations. RCP borrows the pairwise similarity matrix approach but operates on behavioral output (API responses), not internal activations. This is a deliberate construct validity boundary: RCP measures judgment geometry, not representational geometry. For open-weight models, comparing behavioral geometry (RCP) to internal geometry (embedding cosine distances or SAE probes) would test this boundary directly and is a planned extension.
+**Representational similarity analysis.** Kriegeskorte, Mur, and Bandettini (2008) introduced representational similarity analysis (RSA) for comparing neural representations. RCP borrows the pairwise similarity matrix approach but operates on behavioral output (API responses), not internal activations. This is a deliberate construct validity boundary: RCP measures judgment geometry, not representational geometry. For open-weight models, comparing behavioral geometry (RCP) to internal geometry (embedding cosine distances or SAE probes) would test this boundary directly and is a planned extension.
 
 **RCP's contribution.** Output-level bias benchmarks evaluate what a model says. Probing classifiers and RSA evaluate internal structure but require weight access. Behavioral consistency tests evaluate individual output stability. RCP adds a structural dimension to this toolkit: it measures the stability of relational structure using only API access. It is designed as a companion to these existing tools, not a replacement.
 
@@ -56,7 +56,7 @@ Seven conditions, each consisting of a system-prompt preamble prepended to every
 
 **Neutral:** No preamble. The bare probe prompt only.
 
-**Four cultural orientations:** Individualist (individual rights, personal autonomy), collectivist (group harmony, mutual obligation), hierarchical (clear social ranks, role-based duties), and egalitarian (rejection of rank, distributed power). These orientations are derived from Grid-Group Cultural Theory (Douglas 1970; Thompson et al. 1990). Each preamble is three sentences: context, implication, instruction. None mention specific cultures, religions, or nations. The framing is "a society that..." not "you believe..." to reduce RLHF compliance artifacts.
+**Four cultural orientations:** Individualist (individual rights, personal autonomy), collectivist (group harmony, mutual obligation), hierarchical (clear social ranks, role-based duties), and egalitarian (rejection of rank, distributed power). These orientations are derived from Grid-Group Cultural Theory (Douglas 1970; Thompson, Ellis, and Wildavsky 1990). Each preamble is three sentences: context, implication, instruction. None mention specific cultures, religions, or nations. The framing is "a society that..." not "you believe..." to reduce RLHF compliance artifacts.
 
 **Irrelevant (prompt-noise control):** A preamble about unusually warm weather. Isolates how much drift comes from any preamble at all versus culturally meaningful content.
 
@@ -140,7 +140,7 @@ The centroid baseline analysis reveals each model's default cultural position: h
 
 **Gemini Flash** is anomalous. Its rho values to individualist (0.680) and collectivist (0.668) are nearly equal, but with high drift in every domain including the physical control, these values are difficult to interpret as a stable default position.
 
-Three of four interpretable models default to an individualist position under neutral prompting; the fourth (Grok) defaults collectivist. "Neutral" is not culturally neutral. This finding is consistent with the predominantly Western, English-language training data these models share (Henrich et al. 2010), though I note that the framings themselves are Western-academic ideal types derived from Grid-Group Cultural Theory, which may contribute to the apparent alignment.
+Three of four interpretable models default to an individualist position under neutral prompting; the fourth (Grok) defaults collectivist. "Neutral" is not culturally neutral. This finding is consistent with the predominantly Western, English-language training data these models share (Henrich, Heine, and Norenzayan 2010), though I note that the framings themselves are Western-academic ideal types derived from Grid-Group Cultural Theory, which may contribute to the apparent alignment.
 
 ### 4.3 Domain Ordering and Two Design Errors
 
@@ -266,7 +266,7 @@ Both compliance-driven instability and representation-driven instability are dep
 
 **No human baseline.** The current experiment measures how models behave but not how humans behave under the same task. Without human comparison data, it is impossible to determine whether a model's stability is a feature (cultural robustness) or a bug (cultural rigidity), or whether nonsense compliance is uniquely a model behavior or also a human one. A companion paper (Michaels, forthcoming) collects human baseline data using a related instrument, but the RCP task itself has not been administered to human participants.
 
-**MFT concept overlap.** The moral domain inventory (fairness, honor, harm, loyalty, purity, care) overlaps substantially with Haidt's Moral Foundations Theory (Graham et al. 2011), which was developed primarily on WEIRD samples. This limits generalizability to moral frameworks not well represented by MFT foundations. A v2 inventory drawing on Gyekye, Hwang, and Ubuntu philosophy is planned.
+**MFT concept overlap.** The moral domain inventory (fairness, honor, harm, loyalty, purity, care) overlaps substantially with Haidt's Moral Foundations Theory (Graham, Nosek, and Haidt et al. 2011), which was developed primarily on WEIRD samples. This limits generalizability to moral frameworks not well represented by MFT foundations. A v2 inventory drawing on Gyekye, Hwang, and Ubuntu philosophy is planned.
 
 **English lexical items only.** All concepts are single English words. Cross-lingual probing would require translation validation.
 
@@ -322,15 +322,15 @@ The protocol is open-source. The pre-registration is public. The data are availa
 
 [Abbott, E. A. (1884)](./rcp-annotated-bibliography.md#abbott-1884). *Flatland: A Romance of Many Dimensions*. Seeley & Co.
 
-[Arora, A., et al. (2023)](./rcp-annotated-bibliography.md#arora-2023). Probing pre-trained language models for cross-cultural differences in values. *Proceedings of the First Workshop on Cross-Cultural Considerations in NLP*.
+[Arora, A., Karkkainen, L., and Romero, M. (2023)](./rcp-annotated-bibliography.md#arora-2023). Probing pre-trained language models for cross-cultural differences in values. *Proceedings of the First Workshop on Cross-Cultural Considerations in NLP*.
 
-[Cao, Y., et al. (2023)](./rcp-annotated-bibliography.md#cao-2023). Assessing cross-cultural alignment between ChatGPT and human societies: An empirical study. *Proceedings of the ACL Workshop on NLP for Positive Impact*.
+[Cao, Y., Diao, S., and Bui, N. (2023)](./rcp-annotated-bibliography.md#cao-2023). Assessing cross-cultural alignment between ChatGPT and human societies: An empirical study. *Proceedings of the ACL Workshop on NLP for Positive Impact*.
 
-[Durmus, E., et al. (2023)](./rcp-annotated-bibliography.md#durmus-2023). Towards measuring the representation of subjective global opinions in language models. *arXiv preprint arXiv:2306.16388*.
+[Durmus, E., Nguyen, K., Liao, T. I., Schiefer, N., Caliskan, A., and Ganguli, H. (2023)](./rcp-annotated-bibliography.md#durmus-2023). Towards measuring the representation of subjective global opinions in language models. *arXiv preprint arXiv:2306.16388*.
 
-[Elazar, Y., et al. (2021)](./rcp-annotated-bibliography.md#elazar-2021). Measuring and improving consistency in pretrained language models. *Transactions of the Association for Computational Linguistics*, 9:1012-1031.
+[Elazar, Y., Kassner, N., Ravfogel, S., Ravichander, A., Hovy, E., and Schutze, H. et al. (2021)](./rcp-annotated-bibliography.md#elazar-2021). Measuring and improving consistency in pretrained language models. *Transactions of the Association for Computational Linguistics*, 9:1012-1031.
 
-[Graham, J., et al. (2011)](./rcp-annotated-bibliography.md#graham-2011). Mapping the moral domain. *Journal of Personality and Social Psychology*, 101(2), 366-385.
+[Graham, J., Nosek, B. A., Haidt, J., Iyer, R., Koleva, S., and Ditto, P. H. (2011)](./rcp-annotated-bibliography.md#graham-2011). Mapping the moral domain. *Journal of Personality and Social Psychology*, 101(2), 366-385.
 
 [Gyekye, K. (1997)](./rcp-annotated-bibliography.md#gyekye-1997). *Tradition and Modernity: Philosophical Reflections on the African Experience*. Oxford University Press.
 
@@ -338,15 +338,15 @@ The protocol is open-source. The pre-registration is public. The data are availa
 
 [Hwang, K.-K. (2001)](./rcp-annotated-bibliography.md#hwang-2001). Morality 'face' and 'favor' in Chinese society. In C. Y. Chiu, F. Hong, and S. Shavitt (Eds.), *Problems and Solutions in Cross-Cultural Theory, Research, and Application*. Psychology Press.
 
-[Khan, A., et al. (2025)](./rcp-annotated-bibliography.md#khan-2025). Randomness, not representation: The unreliability of evaluating cultural alignment in LLMs. In *Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)*, pp. 2151-2165.
+[Khan, A., Casper, S., and Hadfield-Menell, D. (2025)](./rcp-annotated-bibliography.md#khan-2025). Randomness, not representation: The unreliability of evaluating cultural alignment in LLMs. In *Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)*, pp. 2151-2165.
 
-[Kriegeskorte, N., et al. (2008)](./rcp-annotated-bibliography.md#kriegeskorte-2008). Representational similarity analysis: connecting the branches of systems neuroscience. *Frontiers in Systems Neuroscience*, 2, 4.
+[Kriegeskorte, N., Mur, M., and Bandettini, P. A. (2008)](./rcp-annotated-bibliography.md#kriegeskorte-2008). Representational similarity analysis: connecting the branches of systems neuroscience. *Frontiers in Systems Neuroscience*, 2, 4.
 
-[Rozen, N., et al. (2025)](./rcp-annotated-bibliography.md#rozen-2025). Do LLMs have consistent values? In *Proceedings of the 13th International Conference on Learning Representations (ICLR 2025)*, pp. 15659-15685.
+[Rozen, N., Bezalel, L., Elidan, G., Globerson, A., and Daniel, E. (2025)](./rcp-annotated-bibliography.md#rozen-2025). Do LLMs have consistent values? In *Proceedings of the 13th International Conference on Learning Representations (ICLR 2025)*, pp. 15659-15685.
 
-[Shweder, R. A., et al. (1997)](./rcp-annotated-bibliography.md#shweder-1997). The "big three" of morality (autonomy, community, and divinity) and the "big three" explanations of suffering. In A. Brandt and P. Rozin (Eds.), *Morality and Health*. Routledge.
+[Shweder, R. A., Much, N. C., Mahapatra, M., and Park, L. (1997)](./rcp-annotated-bibliography.md#shweder-1997). The "big three" of morality (autonomy, community, and divinity) and the "big three" explanations of suffering. In A. Brandt and P. Rozin (Eds.), *Morality and Health*. Routledge.
 
-[Zhu, K., et al. (2023)](./rcp-annotated-bibliography.md#zhu-2023). PromptBench: Towards evaluating the robustness of large language models on adversarial prompts. *arXiv preprint arXiv:2306.04528*.
+[Zhu, K., Wang, J., Zhou, J., Wang, Z., Chen, H., and Wang, Y. et al. (2023)](./rcp-annotated-bibliography.md#zhu-2023). PromptBench: Towards evaluating the robustness of large language models on adversarial prompts. *arXiv preprint arXiv:2306.04528*.
 
 ---
 
@@ -354,9 +354,9 @@ The protocol is open-source. The pre-registration is public. The data are availa
 
 [Douglas, M. (1970)](./rcp-annotated-bibliography.md#douglas-1970). *Natural Symbols: Explorations in Cosmology*. Barrie and Rockliff.
 
-[Henrich, J., et al. (2010)](./rcp-annotated-bibliography.md#henrich-2010). The weirdest people in the world? *Behavioral and Brain Sciences*, 33(2-3), 61-83.
+[Henrich, J., Heine, S. J., and Norenzayan, A. (2010)](./rcp-annotated-bibliography.md#henrich-2010). The weirdest people in the world? *Behavioral and Brain Sciences*, 33(2-3), 61-83.
 
-[Thompson, M., et al. (1990)](./rcp-annotated-bibliography.md#thompson-1990). *Cultural Theory*. Westview Press.
+[Thompson, M., Ellis, R., and Wildavsky, A. (1990)](./rcp-annotated-bibliography.md#thompson-1990). *Cultural Theory*. Westview Press.
 
 ---
 
