@@ -1,0 +1,40 @@
+{
+  "concepts": {
+    "physical": [
+      "gravity", "friction", "combustion", "pressure", "erosion", "conduction",
+      "momentum", "velocity", "acceleration", "inertia", "buoyancy", "torque",
+      "convection", "evaporation", "condensation", "insulation", "viscosity",
+      "refraction", "diffusion", "magnetism", "turbulence", "resonance",
+      "elasticity", "density", "corrosion", "oxidation", "crystallization",
+      "absorption", "compression", "expansion", "displacement", "oscillation",
+      "wavelength", "frequency", "amplitude", "entropy", "conductivity",
+      "permeability", "solubility", "precipitation", "sublimation", "deformation",
+      "saturation", "polarization", "fluorescence", "capacitance", "impedance",
+      "attenuation", "diffraction", "ionization"
+    ],
+    "institutional": [
+      "authority", "property", "contract", "citizenship", "hierarchy", "obligation",
+      "legislation", "jurisdiction", "bureaucracy", "diplomacy", "parliament",
+      "sovereignty", "constitution", "regulation", "arbitration", "tenure",
+      "accreditation", "ratification", "extradition", "incorporation",
+      "franchise", "tariff", "subsidy", "embargo", "sanction",
+      "confederation", "federation", "monarchy", "republic", "theocracy",
+      "meritocracy", "aristocracy", "oligarchy", "autocracy", "democracy",
+      "conscription", "amnesty", "impeachment", "referendum", "census",
+      "taxation", "appropriation", "prosecution", "adjudication", "mediation",
+      "naturalization", "deportation", "emancipation", "probation", "parole"
+    ],
+    "moral": [
+      "fairness", "honor", "harm", "loyalty", "purity", "care",
+      "compassion", "honesty", "integrity", "courage", "gratitude",
+      "humility", "forgiveness", "generosity", "mercy", "benevolence",
+      "dignity", "conscience", "virtue", "wisdom", "temperance",
+      "prudence", "sincerity", "devotion", "reverence", "modesty",
+      "chastity", "sanctity", "righteousness", "obedience",
+      "repentance", "atonement", "sacrifice", "altruism", "empathy",
+      "tolerance", "accountability", "trustworthiness", "fidelity", "clemency",
+      "hospitality", "stewardship", "filial", "ancestral", "communal",
+      "solidarity", "reciprocity", "kinship", "custodianship", "veneration"
+    ]
+  }
+}

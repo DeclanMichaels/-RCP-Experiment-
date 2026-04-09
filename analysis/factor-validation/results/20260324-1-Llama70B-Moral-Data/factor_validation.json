@@ -1,0 +1,311 @@
+{
+  "model_name": "llama-70b",
+  "n_concepts": 18,
+  "n_factors": 3,
+  "kmo_score": 0.41993456149270825,
+  "bartlett_chi2": 14648.171865417922,
+  "bartlett_p": 0.0,
+  "parallel_n_factors": 3,
+  "domain_recovery_rate": 0.8333333333333334,
+  "variance_explained": [
+    0.2698424580587942,
+    0.20456979070161727,
+    0.1917098923505782
+  ],
+  "cumulative_variance": 0.6661221411109897,
+  "tucker_congruence": [
+    {
+      "factor": 0,
+      "domain": "moral",
+      "congruence": -0.8222540788287956
+    },
+    {
+      "factor": 1,
+      "domain": "physical",
+      "congruence": 0.9272042583175159
+    },
+    {
+      "factor": 2,
+      "domain": "institutional",
+      "congruence": 0.8627906909324455
+    }
+  ],
+  "concept_assignments": [
+    {
+      "concept": "authority",
+      "domain": "institutional",
+      "primary_factor": 2,
+      "primary_loading": 0.8588134148982469,
+      "predicted_domain": "institutional",
+      "match": true
+    },
+    {
+      "concept": "care",
+      "domain": "moral",
+      "primary_factor": 0,
+      "primary_loading": -0.774905647572403,
+      "predicted_domain": "moral",
+      "match": true
+    },
+    {
+      "concept": "citizenship",
+      "domain": "institutional",
+      "primary_factor": 0,
+      "primary_loading": -0.7125321893721863,
+      "predicted_domain": "moral",
+      "match": false
+    },
+    {
+      "concept": "combustion",
+      "domain": "physical",
+      "primary_factor": 1,
+      "primary_loading": 0.6234341123069944,
+      "predicted_domain": "physical",
+      "match": true
+    },
+    {
+      "concept": "conduction",
+      "domain": "physical",
+      "primary_factor": 1,
+      "primary_loading": 0.6176176859517799,
+      "predicted_domain": "physical",
+      "match": true
+    },
+    {
+      "concept": "contract",
+      "domain": "institutional",
+      "primary_factor": 2,
+      "primary_loading": 0.6539880382054287,
+      "predicted_domain": "institutional",
+      "match": true
+    },
+    {
+      "concept": "erosion",
+      "domain": "physical",
+      "primary_factor": 1,
+      "primary_loading": 0.7859053287772426,
+      "predicted_domain": "physical",
+      "match": true
+    },
+    {
+      "concept": "fairness",
+      "domain": "moral",
+      "primary_factor": 0,
+      "primary_loading": -0.8821661597879645,
+      "predicted_domain": "moral",
+      "match": true
+    },
+    {
+      "concept": "friction",
+      "domain": "physical",
+      "primary_factor": 1,
+      "primary_loading": 0.8959861791384992,
+      "predicted_domain": "physical",
+      "match": true
+    },
+    {
+      "concept": "gravity",
+      "domain": "physical",
+      "primary_factor": 1,
+      "primary_loading": 0.6706728412504445,
+      "predicted_domain": "physical",
+      "match": true
+    },
+    {
+      "concept": "harm",
+      "domain": "moral",
+      "primary_factor": 1,
+      "primary_loading": 0.5925091982801824,
+      "predicted_domain": "physical",
+      "match": false
+    },
+    {
+      "concept": "hierarchy",
+      "domain": "institutional",
+      "primary_factor": 2,
+      "primary_loading": 0.8387954036258648,
+      "predicted_domain": "institutional",
+      "match": true
+    },
+    {
+      "concept": "honor",
+      "domain": "moral",
+      "primary_factor": 0,
+      "primary_loading": -0.8105560119523274,
+      "predicted_domain": "moral",
+      "match": true
+    },
+    {
+      "concept": "loyalty",
+      "domain": "moral",
+      "primary_factor": 0,
+      "primary_loading": -0.7949063424638911,
+      "predicted_domain": "moral",
+      "match": true
+    },
+    {
+      "concept": "obligation",
+      "domain": "institutional",
+      "primary_factor": 0,
+      "primary_loading": -0.66762165211836,
+      "predicted_domain": "moral",
+      "match": false
+    },
+    {
+      "concept": "pressure",
+      "domain": "physical",
+      "primary_factor": 1,
+      "primary_loading": 0.7645927770002794,
+      "predicted_domain": "physical",
+      "match": true
+    },
+    {
+      "concept": "property",
+      "domain": "institutional",
+      "primary_factor": 2,
+      "primary_loading": 0.6133177829638314,
+      "predicted_domain": "institutional",
+      "match": true
+    },
+    {
+      "concept": "purity",
+      "domain": "moral",
+      "primary_factor": 0,
+      "primary_loading": -0.7681980814419951,
+      "predicted_domain": "moral",
+      "match": true
+    }
+  ],
+  "loadings": [
+    [
+      -0.3438815572959396,
+      0.14622719109714816,
+      0.8588134148982469
+    ],
+    [
+      -0.774905647572403,
+      0.03445525138841775,
+      0.11106169146163931
+    ],
+    [
+      -0.7125321893721863,
+      -0.1034298211711704,
+      0.41575924574693235
+    ],
+    [
+      0.008205154291516506,
+      0.6234341123069944,
+      -0.084456414630432
+    ],
+    [
+      0.06486315863422736,
+      0.6176176859517799,
+      0.17297298384994644
+    ],
+    [
+      -0.4416160560045784,
+      0.1096100454790435,
+      0.6539880382054287
+    ],
+    [
+      -0.05915892515866458,
+      0.7859053287772426,
+      -0.03342889508523076
+    ],
+    [
+      -0.8821661597879645,
+      0.07285593763849325,
+      0.1441179563093866
+    ],
+    [
+      -0.021901132441371485,
+      0.8959861791384992,
+      0.04251981972391684
+    ],
+    [
+      0.1500518691837191,
+      0.6706728412504445,
+      0.39301752809327906
+    ],
+    [
+      -0.4081441984022543,
+      0.5925091982801824,
+      -0.14175649519812944
+    ],
+    [
+      -0.15111841374462884,
+      0.0992859815656279,
+      0.8387954036258648
+    ],
+    [
+      -0.8105560119523274,
+      -0.02996835107018803,
+      0.4328067721169747
+    ],
+    [
+      -0.7949063424638911,
+      -0.028386343562887988,
+      0.33605716192993984
+    ],
+    [
+      -0.66762165211836,
+      0.18143156139662844,
+      0.5452293411372017
+    ],
+    [
+      -0.10198193340242441,
+      0.7645927770002794,
+      0.42866714364166675
+    ],
+    [
+      -0.3196475017762176,
+      0.034704943449004017,
+      0.6133177829638314
+    ],
+    [
+      -0.7681980814419951,
+      0.09975830737649337,
+      -0.06323005928842404
+    ]
+  ],
+  "eigenvalues": [
+    6.829781254982341,
+    3.4768504430253104,
+    1.6835668419901846,
+    1.3454085211824405,
+    1.1122817934960256,
+    0.8231934107563914,
+    0.7616676622767657,
+    0.5989312842082718,
+    0.4549229025545964,
+    0.398286077645914,
+    0.26314400089430806,
+    0.13933267144611644,
+    0.09978975641795247,
+    0.012843378746622853,
+    9.662152590768534e-11,
+    9.514425039918509e-11,
+    9.476348810439297e-11,
+    9.022996209061137e-11
+  ],
+  "parallel_eigenvalues": [
+    1.7749783585968468,
+    1.5962343684716116,
+    1.4982601545470011,
+    1.391613949864999,
+    1.301983804904864,
+    1.2382313605367021,
+    1.1741057003958124,
+    1.0951828971120654,
+    1.0466717714975773,
+    0.9789921632607882,
+    0.9382032444718125,
+    0.867095140002502,
+    0.8165690850117201,
+    0.7703164011969701,
+    0.721547286109081,
+    0.6688668583742506,
+    0.6244675936707939,
+    0.5522390074284383
+  ]
+}

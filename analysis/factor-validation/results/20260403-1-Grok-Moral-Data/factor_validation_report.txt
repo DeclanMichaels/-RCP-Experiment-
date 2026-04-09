@@ -1,0 +1,64 @@
+Factor Analysis Construct Validation Report
+Model: grok
+Concepts: 18 across 3 domains
+Factors extracted: 3
+
+--- Sampling Adequacy ---
+KMO score: 0.1208
+  Interpretation: unacceptable
+Bartlett chi-square: 7356.82, p = 0.000000
+
+--- Parallel Analysis ---
+Suggested number of factors: 5
+Requested factors: 3
+  NOTE: Parallel analysis suggests 5, not 3. This may indicate the domain structure doesn't cleanly separate into 3 factors.
+
+--- Variance Explained ---
+  Factor 1: 0.2115 (21.2%)
+  Factor 2: 0.1407 (14.1%)
+  Factor 3: 0.1322 (13.2%)
+  Cumulative: 0.4845 (48.4%)
+
+--- Factor Loadings (varimax rotation) ---
+  Concept         Domain               moral   physical institutional  Primary
+  ----------------------------------------------------------------------------
+  authority       institutional      -0.261     -0.055      0.792*  OK
+  care            moral              -0.640*     0.039      0.012   OK
+  citizenship     institutional      -0.518*    -0.047      0.183   MISS
+  combustion      physical           -0.010      0.481*    -0.015   OK
+  conduction      physical            0.031      0.185*     0.064   OK
+  contract        institutional      -0.486*    -0.074      0.336   MISS
+  erosion         physical            0.010      0.787*     0.024   OK
+  fairness        moral              -0.763*     0.132     -0.106   OK
+  friction        physical            0.043      0.828*     0.138   OK
+  gravity         physical            0.114      0.331      0.521*  MISS
+  harm            moral              -0.151      0.721*    -0.197   MISS
+  hierarchy       institutional      -0.213     -0.119      0.680*  OK
+  honor           moral              -0.882*    -0.041      0.169   OK
+  loyalty         moral              -0.801*    -0.047      0.208   OK
+  obligation      institutional      -0.601*     0.090      0.487   MISS
+  pressure        physical            0.036      0.527      0.639*  MISS
+  property        institutional      -0.253      0.003      0.276*  OK
+  purity          moral              -0.559*     0.002     -0.070   OK
+
+--- Domain Recovery ---
+Recovery rate: 66.67% (12/18)
+Misassigned concepts:
+  citizenship     domain=institutional, loaded on factor for moral
+  contract        domain=institutional, loaded on factor for moral
+  gravity         domain=physical, loaded on factor for institutional
+  harm            domain=moral, loaded on factor for physical
+  obligation      domain=institutional, loaded on factor for moral
+  pressure        domain=physical, loaded on factor for institutional
+
+--- Tucker's Congruence Coefficient ---
+  Factor 1 (moral          ): -0.7943 (fair)
+  Factor 2 (physical       ): 0.8050 (fair)
+  Factor 3 (institutional  ): 0.7288 (fair)
+
+--- Interpretation Guide ---
+KMO: >0.8 good, >0.6 adequate, <0.5 unacceptable for factor analysis.
+Bartlett: p < 0.05 means the correlation matrix is not identity (good).
+Tucker's congruence: >0.95 excellent, >0.85 good, >0.65 fair match to target.
+Recovery rate: fraction of concepts whose highest loading matches their domain.
+Parallel analysis: data-driven estimate of number of meaningful factors.
