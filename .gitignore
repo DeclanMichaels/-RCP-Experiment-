@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .venv/
 .pytest_cache/
+.render-venv/
 
 # Environment
 .env
@@ -25,6 +26,10 @@ stats_exact.txt
 detect_target_flattening
 get_target_domain_pairs
 git_status
+extract_moral_pairs.py
+extract_variance_ratios.py
+moral_pair_ratings.csv
+variance_ratios.csv
 
 # Archives
 runs.zip
