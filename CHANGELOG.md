@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## Version 1.1 — Citation Corrections (2026-07-14)
+
+Corrects citation errors found in a systematic reference audit. No results, analyses, or conclusions are affected; all changes are to reference metadata and one framing caveat. Version 1.0 remains available as the prior Zenodo version (DOI 10.5281/zenodo.20822339); the v1.1 version DOI is 10.5281/zenodo.21363156.
+
+- **Arora et al. (2023)**: author list corrected from "Arora, Karkkainen, and Romero" to **Arora, Kaffee, and Augenstein**; the paper's benchmark corrected to **Hofstede's cultural dimensions and the World Values Survey** (not GlobalOpinionQA, which is the benchmark of Durmus et al. 2023).
+- **Cao et al. (2023)**: author list corrected from "Cao, Diao, and Bui" to **Cao, Zhou, Lee, Cabello, Chen, and Hershcovich**.
+- **Hwang (2001)**: replaced an unverifiable edited-volume citation with the correct 2001 work, **"The deep structure of Confucianism: A social psychological approach," *Asian Philosophy* 11(3), 179–204**.
+- **Bargh, Chen & Burrows (1996)**: the Section 4.5 human-priming parallel is now qualified with the failed replication by **Doyen et al. (2012)**, added to the references, and presented as a loose analogy rather than corroborating evidence.
+
+Changed files: `papers/relational-consistency-probing.md`, `papers/relational-consistency-probing.pdf`. A "Corrections" section in the paper documents these changes.
+
+---
+
 ## Post-Registration Changes
 
 All changes documented relative to the artifacts uploaded to OSF at pre-registration time (https://osf.io/2z8e3/overview). Pre-registration was completed before confirmatory data collection began.

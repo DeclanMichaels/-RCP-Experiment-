@@ -40,7 +40,7 @@ The paper is organized as follows. Section 2 reviews related work. Section 3 des
 
 **Moral psychology and cross-cultural variation.** Moral Foundations Theory (Haidt 2012) identifies five or six foundations (care, fairness, loyalty, authority, purity, liberty) with cross-cultural variation in their relative weighting. Shweder's ethic-of-autonomy/community/divinity framework (Shweder, Much, and Mahapatra, 1997), Hwang's Confucian relational ethics (Hwang 2001), Gyekye's communitarian personhood (Gyekye 1997), and Miller and Bersoff's (1992) demonstration that Indians prioritize interpersonal obligation over abstract justice describe moral frameworks that do not reduce to MFT foundations. The RCP moral concept inventory draws on MFT, a known limitation with a planned non-MFT inventory. The protocol itself is agnostic to moral theory.
 
-**LLM cultural alignment evaluation.** Arora, Karkkainen, and Romero (2023) benchmark LLM responses against GlobalOpinionQA. Cao, Diao, and Bui (2023) probe cultural values through vignette-based surveys. Durmus et al. (2023) measure model opinions against cross-national survey data. These approaches measure the position a model takes. RCP measures whether the structure of the model's judgments holds when context shifts.
+**LLM cultural alignment evaluation.** Arora, Kaffee, and Augenstein (2023) benchmark LLM responses against human survey data from Hofstede's cultural dimensions and the World Values Survey. Cao, Zhou, Lee, et al. (2023) probe cultural values through vignette-based surveys. Durmus et al. (2023) measure model opinions against cross-national survey data. These approaches measure the position a model takes. RCP measures whether the structure of the model's judgments holds when context shifts.
 
 **Behavioral probing and consistency testing.** Elazar et al. (2021) tested consistency under paraphrase. Zhu et al. (2023) tested adversarial robustness under prompt perturbation. Two recent papers are particularly relevant. Khan, Casper, and Hadfield-Menell (2025) found that LLM cultural alignment is unreliable across presentation formats, incoherent across cultural dimensions, and erratic under prompt steering. Rozen et al. (2025) showed that standard prompting fails to produce human-consistent value correlations. RCP addresses the problems these papers identify by measuring relational structure under controlled perturbation, with built-in controls that distinguish genuine cultural reasoning from prompt compliance.
 
@@ -306,7 +306,7 @@ The irrelevant-preamble control (warm weather) was designed to produce minimal d
 
 Sonnet and GPT-4o generated climate-anxiety framings: environmental harm as a moral axis, individual responsibility for collective climate outcomes. GPT-4o, asked to explain the relationship between loyalty and purity under the weather preamble, responded that loyalty is "the steadfast commitment to environmental practices despite changing conditions" and purity is "the ideal state of the environment." The weather prompt became an environmental ethics framework. Grok constructed an agrarian framing: weather as a force shaping community obligation and resource distribution. Llama's institutional drift under irrelevant framing (2.14) was its highest institutional drift across all framings, including cultural ones.
 
-The weather preamble moved the institutional domain more than some cultural framings did. Under this single irrelevant preamble, models did not maintain a neutral processing mode for concept relationships. The contextual information became a framework for moral and institutional reasoning. This parallels findings from human priming research (Bargh, Chen, and Burrows 1996). The mechanisms may differ, but the behavioral signature is the same: context that should be irrelevant restructures judgment.
+The weather preamble moved the institutional domain more than some cultural framings did. Under this single irrelevant preamble, models did not maintain a neutral processing mode for concept relationships. The contextual information became a framework for moral and institutional reasoning. This resembles a behavioral signature reported in human priming research (Bargh, Chen, and Burrows 1996) — though that specific finding later failed to replicate under controlled conditions (Doyen et al. 2012), so the parallel is offered as a loose analogy rather than corroborating evidence. The mechanisms may differ, and the observation here rests on our own data: context that should be irrelevant restructures judgment.
 
 ### 4.6 The Flatland Inversion
 
@@ -476,11 +476,13 @@ The protocol is open-source. The pre-registration is public. The data are availa
 
 [Abbott, E. A. (1884)](#abbott-1884). *Flatland: A Romance of Many Dimensions*. Seeley & Co.
 
-[Arora, A., Karkkainen, L., and Romero, M. (2023)](#arora-2023). Probing pre-trained language models for cross-cultural differences in values. *Proceedings of the First Workshop on Cross-Cultural Considerations in NLP*.
+[Arora, A., Kaffee, L.-A., and Augenstein, I. (2023)](#arora-2023). Probing pre-trained language models for cross-cultural differences in values. *Proceedings of the First Workshop on Cross-Cultural Considerations in NLP*.
 
 [Bargh, J. A., Chen, M., and Burrows, L. (1996)](#bargh-1996). Automaticity of social behavior: Direct effects of trait construct and stereotype activation on action. *Journal of Personality and Social Psychology*, 71(2), 230-244.
 
-[Cao, Y., Diao, S., and Bui, N. (2023)](#cao-2023). Assessing cross-cultural alignment between ChatGPT and human societies: An empirical study. *Proceedings of the ACL Workshop on NLP for Positive Impact*.
+[Cao, Y., Zhou, L., Lee, S., Cabello, L., Chen, M., and Hershcovich, D. (2023)](#cao-2023). Assessing cross-cultural alignment between ChatGPT and human societies: An empirical study. *Proceedings of the ACL Workshop on NLP for Positive Impact*.
+
+[Doyen, S., Klein, O., Pichon, C.-L., and Cleeremans, A. (2012)](#doyen-2012). Behavioral priming: It's all in the mind, but whose mind? *PLoS ONE*, 7(1), e29081.
 
 [Durmus, E., Nguyen, K., Liao, T. I., Schiefer, N., Caliskan, A., and Ganguli, H. (2023)](#durmus-2023). Towards measuring the representation of subjective global opinions in language models. *arXiv preprint arXiv:2306.16388*.
 
@@ -492,7 +494,7 @@ The protocol is open-source. The pre-registration is public. The data are availa
 
 [Haidt, J. (2012)](#haidt-2012). *The Righteous Mind: Why Good People Are Divided by Politics and Religion*. Vintage Books.
 
-[Hwang, K.-K. (2001)](#hwang-2001). Morality 'face' and 'favor' in Chinese society. In C. Y. Chiu, F. Hong, and S. Shavitt (Eds.), *Problems and Solutions in Cross-Cultural Theory, Research, and Application*. Psychology Press.
+[Hwang, K.-K. (2001)](#hwang-2001). The deep structure of Confucianism: A social psychological approach. *Asian Philosophy*, 11(3), 179-204.
 
 [Hyland, K. (1998)](#hyland-1998). *Hedging in Scientific Research Articles*. John Benjamins Publishing.
 
@@ -554,21 +556,21 @@ A satirical novella where social hierarchy is determined by polygon geometry. Re
 ---
 
 <a id="arora-2023"></a>
-**Arora, A., Karkkainen, L., and Romero, M. (2023). Probing pre-trained language models for cross-cultural differences in values. *Proceedings of the First Workshop on Cross-Cultural Considerations in NLP*.** [arxiv.org/abs/2203.13722](https://arxiv.org/abs/2203.13722)
+**Arora, A., Kaffee, L.-A., and Augenstein, I. (2023). Probing pre-trained language models for cross-cultural differences in values. *Proceedings of the First Workshop on Cross-Cultural Considerations in NLP*.** [arxiv.org/abs/2203.13722](https://arxiv.org/abs/2203.13722)
 
-Benchmarks LLM responses against GlobalOpinionQA, measuring agreement with human survey responses from multiple countries. Cited in Section 2 as an example of position-measuring approaches. RCP complements these by measuring whether judgment structure holds when context shifts, rather than what position the model takes.
+Benchmarks LLM responses against human survey data from Hofstede's cultural dimensions and the World Values Survey, measuring agreement with survey responses from multiple countries. Cited in Section 2 as an example of position-measuring approaches. RCP complements these by measuring whether judgment structure holds when context shifts, rather than what position the model takes.
 
 ---
 
 <a id="bargh-1996"></a>
 **Bargh, J. A., Chen, M., and Burrows, L. (1996). Automaticity of social behavior: Direct effects of trait construct and stereotype activation on action. *Journal of Personality and Social Psychology*, 71(2), 230-244.**
 
-Demonstrates that priming participants with words related to a trait (rudeness, elderly stereotypes) automatically influences subsequent behavior without awareness. Cited in Section 4.5 as a parallel to the irrelevant-preamble construction finding. The weather preamble, like an irrelevant prime, restructured model judgments despite having no semantic connection to the moral domain.
+Demonstrates that priming participants with words related to a trait (rudeness, elderly stereotypes) automatically influences subsequent behavior without awareness. Cited in Section 4.5 as a parallel to the irrelevant-preamble construction finding. The weather preamble, like an irrelevant prime, restructured model judgments despite having no semantic connection to the moral domain. Note: the flagship elderly-priming result later failed to replicate under controlled conditions (Doyen et al. 2012); the parallel is drawn as a loose behavioral analogy, not as corroborating evidence.
 
 ---
 
 <a id="cao-2023"></a>
-**Cao, Y., Diao, S., and Bui, N. (2023). Assessing cross-cultural alignment between ChatGPT and human societies: An empirical study. *Proceedings of the ACL Workshop on NLP for Positive Impact*.** [arxiv.org/abs/2303.17466](https://arxiv.org/abs/2303.17466)
+**Cao, Y., Zhou, L., Lee, S., Cabello, L., Chen, M., and Hershcovich, D. (2023). Assessing cross-cultural alignment between ChatGPT and human societies: An empirical study. *Proceedings of the ACL Workshop on NLP for Positive Impact*.** [arxiv.org/abs/2303.17466](https://arxiv.org/abs/2303.17466)
 
 Probes cultural values in ChatGPT using vignette-based surveys and Hofstede's cultural dimensions. Cited in Section 2 alongside Arora et al. and Durmus et al. as examples of position-measuring approaches.
 
@@ -581,6 +583,13 @@ Probes cultural values in ChatGPT using vignette-based surveys and Hofstede's cu
 **Thompson, M., Ellis, R., and Wildavsky, A. (1990). *Cultural Theory.* Westview Press.**
 
 The four cultural framing conditions (individualist, collectivist, hierarchical, egalitarian) are derived from Grid-Group Cultural Theory, originally developed by Douglas and extended by Thompson, Ellis, and Wildavsky. The theory classifies worldviews along two dimensions: grid (prescribed social roles) and group (group boundary strength). Cited in Section 3.2. The paper notes in Section 4.2 that these framings are Western-academic ideal types, which contributes to the framing-institutional confound.
+
+---
+
+<a id="doyen-2012"></a>
+**Doyen, S., Klein, O., Pichon, C.-L., and Cleeremans, A. (2012). Behavioral priming: It's all in the mind, but whose mind? *PLoS ONE*, 7(1), e29081.** [doi.org/10.1371/journal.pone.0029081](https://doi.org/10.1371/journal.pone.0029081)
+
+A large-sample replication of Bargh, Chen, and Burrows (1996) using automated timing that failed to reproduce the elderly-priming effect, obtaining it only when experimenters expected slower walking — evidence the original reflected experimenter expectancy rather than automatic priming. Cited in Section 4.5 to qualify the Bargh parallel.
 
 ---
 
@@ -627,7 +636,7 @@ Demonstrates that behavioral science draws conclusions overwhelmingly from WEIRD
 ---
 
 <a id="hwang-2001"></a>
-**Hwang, K.-K. (2001). Morality 'face' and 'favor' in Chinese society. In C. Y. Chiu, F. Hong, and S. Shavitt (Eds.), *Problems and Solutions in Cross-Cultural Theory, Research, and Application*. Psychology Press.**
+**Hwang, K.-K. (2001). The deep structure of Confucianism: A social psychological approach. *Asian Philosophy*, 11(3), 179-204.** [doi.org/10.1080/09552360120116928](https://doi.org/10.1080/09552360120116928)
 
 Articulates Confucian relational ethics. Moral obligations are structured by the specific relationship between parties. Cited in Section 2 alongside Gyekye and Shweder as a non-Western moral framework. Hwang's relational ethics implies that concept similarity judgments would shift under framing perturbation if a model has genuine access to relational moral reasoning.
 
@@ -815,3 +824,15 @@ Mean word-set similarity between neutral and each non-neutral framing, averaged 
 | Gemini Flash | 0.165 | 0.136 | 0.112 | 0.130 | 0.222 | 0.106 |
 | Llama 70B | 0.162 | 0.161 | 0.131 | 0.174 | 0.135 | 0.107 |
 | Grok | 0.134 | 0.123 | 0.097 | 0.126 | 0.141 | 0.090 |
+
+
+---
+
+## Corrections
+
+**Version 1.1 — 14 July 2026.** This version corrects citation errors found in a systematic reference audit. No results, analyses, or conclusions are affected; all changes are to reference metadata and one framing caveat. Version 1.0 remains available as the prior Zenodo version.
+
+- **Arora et al. (2023):** corrected the author list from "Arora, Karkkainen, and Romero" to the actual authors, **Arora, Kaffee, and Augenstein**. Corrected the description of the paper's benchmark: it uses **Hofstede's cultural dimensions and the World Values Survey**, not GlobalOpinionQA (GlobalOpinionQA is the benchmark of Durmus et al. 2023, cited separately). (Section 2; References; Annotated Bibliography.)
+- **Cao et al. (2023):** corrected the author list from "Cao, Diao, and Bui" to the actual authors, **Cao, Zhou, Lee, Cabello, Chen, and Hershcovich**. (Section 2; References; Annotated Bibliography.)
+- **Hwang (2001):** the previously cited edited volume ("Chiu, Hong & Shavitt (Eds.), *Problems and Solutions in Cross-Cultural Theory, Research, and Application*") could not be verified and does not appear to exist as cited. Replaced with the correct 2001 work, **"The deep structure of Confucianism: A social psychological approach," *Asian Philosophy* 11(3), 179–204**, which the in-text citation ("Hwang 2001") already referenced. (References; Annotated Bibliography.)
+- **Bargh, Chen & Burrows (1996):** the parallel drawn in Section 4.5 has been qualified. The flagship elderly-priming result failed to replicate under controlled conditions (**Doyen et al. 2012**, now added to the references), so the human-priming parallel is presented as a loose analogy rather than corroborating evidence; the paper's own finding stands on its own data. (Section 4.5; References; Annotated Bibliography.)
