@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Version 1.2 — Interpretive Clarifications (2026-07-14)
+
+Three interpretive/framing refinements from the same reference review (no factual errors, no results or conclusions affected):
+
+- **Gyekye (1997)**: annotated-bibliography gloss revised to reflect his *moderate* communitarianism (individual rights retained), replacing "duties taking precedence over rights."
+- **Shweder et al. (1997)**: Section 2 reframed from "do not reduce to MFT foundations" to "broaden the moral domain beyond the WEIRD autonomy ethic," noting that CAD is the acknowledged ancestor of MFT's binding foundations rather than orthogonal to them.
+- **Tversky (1977)**: added a one-sentence caveat that his non-metric, asymmetric account of similarity makes RCP's symmetric, metric RSA an approximation rather than a literal model.
+
+Changed files: `papers/relational-consistency-probing.md`, `papers/relational-consistency-probing.pdf`. See the paper's "Corrections" section.
+
+---
+
 ## Version 1.1 — Citation Corrections (2026-07-14)
 
 Corrects citation errors found in a systematic reference audit. No results, analyses, or conclusions are affected; all changes are to reference metadata and one framing caveat. Version 1.0 remains available as the prior Zenodo version (DOI 10.5281/zenodo.20822339); the v1.1 version DOI is 10.5281/zenodo.21363156.
